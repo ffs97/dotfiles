@@ -1,0 +1,13 @@
+*.swp
+*.swo
+*~
+
+*.tar.*
+*.zip
+*.gz*
+
+*.log
+*.out
+*.bbl
+*.blg
+*.aux
