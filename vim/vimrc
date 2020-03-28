@@ -1,0 +1,206 @@
+"
+"	███████				 ███
+"  ░███░░███			░███						███
+"  ░███ ░░░   ██████	██████		  ████	 ████  ░░░	  ██████████████
+"  ██████	 ░░░░░███  ░░███░		 ░░███	 ███	███  ░░███░░███░░███
+" ░░███░	  ███████	░███		  ░░███ ███    ░███   ░███ ░███ ░███
+"  ░███		 ███░░███	░███  █		   ░░█████	   ░███   ░███ ░███ ░███
+"  █████	 ░████████	░░████	 ███	░░███	   █████  █████░███ █████
+" ░░░░░		 ░░░░░░░░	 ░░░░	░░░		 ░░░	  ░░░░░  ░░░░░ ░░░ ░░░░░
+"
+" ======================================================================================
+"   Name:       fat.vim
+"   Author:     Gurpreet Singh
+"   Url:        https://github.com/ffs97/dotfiles/vim/vimrc
+"   License:    The MIT License (MIT)
+"
+"   Configuration file for [g]vim
+" ======================================================================================
+
+let g:theme="thunderclouds"
+
+set shell=/usr/bin/zsh
+set remap
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Loading Vundle Plugins
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'itchyny/lightline.vim'      " Nice looking statusline
+Plugin 'preservim/nerdcommenter'    " Multi-language commenting functionality
+Plugin 'scrooloose/nerdtree'        " File explorer not based on netrw
+Plugin 'ryanoasis/vim-devicons'     " Nerd Font icons for NERD Tree
+Plugin 'Chiel92/vim-autoformat'     " Wrapping for multi-language formatting
+Plugin 'junegunn/goyo.vim'          " Distraction-free writing
+Plugin 'neomake/neomake'            " Asynchronous syntax checking
+Plugin 'ZeroKnight/vim-signjump'    " Jumping between signs
+Plugin 'tpope/vim-eunuch'           " OS functionality consistent with open buffers
+Plugin 'dhruvasagar/vim-table-mode' " Easy table writing (md, rest) functionality
+Plugin 'SirVer/ultisnips'           " Python wrapper for dynamic snippets
+Plugin 'honza/vim-snippets'         " Multi-language snippet shortcuts
+Plugin 'Valloric/YouCompleteMe'     " Autocompletion module with multi-language support
+
+" Plugin 'lervag/vimtex'
+
+call vundle#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring the User Interface
+
+if has("gui_running")
+	set t_Co=256
+
+	execute "colorscheme " . g:theme
+else
+	colorscheme desert
+endif
+
+set guifont=Iosevka\ Medium\ 11
+set encoding=utf8
+set guioptions=v
+set noshowmode
+
+set cursorline
+set linespace=5
+set number numberwidth=5
+set clipboard=unnamedplus
+
+set laststatus=2 showtabline=2
+
+set splitbelow splitright
+set fillchars+=vert:●
+
+autocmd BufEnter * silent! :lchdir %:p:h
+
+set viminfo+=:500
+set timeout ttimeoutlen=50
+
+set hlsearch
+nnoremap <esc> :noh<cr><esc>
+
+source ${HOME}/.vim/shortcuts.vim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring the Wild Menu
+
+if has("wildmenu")
+	set wildmenu
+
+	set wildignore+=*.a,*.o
+	set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+	set wildignore+=*.pdf,*.log,*.aux,*.out
+	set wildignore+=*.tar.*,*.zip
+	set wildignore+=*.pyc,
+	set wildignore+=.DS_Store,.git,.hg,.svn
+	set wildignore+=*~,*.swp,*.tmp
+
+	" Filename autocompletion
+	inoremap <C-F> <C-X><C-F>
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Syntax and Indentation
+
+filetype plugin indent on
+syntax on
+if &diff
+	syntax off
+endif
+
+autocmd FileType tex,latex,plaintex set syntax=context filetype=tex
+
+set tabstop=4
+set shiftwidth=4
+
+set autoindent expandtab
+
+autocmd FileType markdown set conceallevel=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Autocompletion
+
+inoremap <c-f> <c-x><c-f>
+
+function InsertTabWrapper()
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k'
+		return "\<tab>"
+	else
+		return "\<c-p>"
+	endif
+endfunction
+" inoremap <expr> <tab> InsertTabWrapper()
+" inoremap <s-tab> <c-n>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Word Wrap
+
+set wrap
+set linebreak
+set nolist
+set breakindent
+
+ru macros/justify.vim
+vmap <c-j> _j
+
+autocmd FileType markdown,text set textwidth=88 formatoptions+=a
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Lightline
+
+let g:lightline = {"colorscheme": "thunderclouds"}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Nerd Commenter
+
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+
+imap <c-q> <c-o><leader>c<Space>
+nmap <c-q> <leader>c<Space>
+vmap <c-q> <leader>c<Space>gv
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Nerd Tree
+
+let NERDTreeRespectWildIgnore=1
+
+nmap <c-b> :NERDTreeToggleVCS<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Autoformat
+
+nmap <F5> :Autoformat<cr>:Neomake<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Goyo
+
+let g:goyo_width=88
+let g:goyo_height=95
+let g:goyo_linenr=0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Neomake
+
+call neomake#configure#automake('w')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Ultisnips and YouCompleteMe
+
+let g:UltiSnipsJumpForwardTrigger="<a-j>"
+let g:UltiSnipsJumpBackwardTrigger="<a-k>"
+
+let g:ycm_key_list_select_completion=["<Down>"]
+let g:ycm_key_list_previous_completion=["<Up>"]
+let g:ycm_key_list_stop_completion = ["<return>"]
+
+let g:UltiSnipsExpandTrigger="<tab>"

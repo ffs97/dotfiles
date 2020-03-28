@@ -1,0 +1,22 @@
+snippet initassign "Initialise assignment tex" b
+\documentclass[${1:10}pt]{article}
+
+\usepackage{assign}
+
+\setinstitute{${2:Columbia University in the City of New York}}
+\setcoursetitle{${3:courseCode}: ${5:courseTitle}}
+\setassigncode{${6:assignId}}
+\setauthname{${7:Gurpreet Singh}}
+\setauthroll{${8:gs3056}}
+\setheaddate{\today}
+
+\setstartnewpage{${9:TRUE}}
+
+\begin{document}
+\makeheader%
+
+$0
+
+\begin{document}
+endsnippet
+
