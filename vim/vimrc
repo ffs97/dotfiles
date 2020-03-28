@@ -17,7 +17,11 @@
 "   Configuration file for [g]vim
 " ======================================================================================
 
-let g:theme="thunderclouds"
+if $THEME == ""
+    let g:theme="thunderclouds"
+else
+    let g:theme=$THEME
+endif
 
 set shell=/usr/bin/zsh
 set remap
@@ -52,13 +56,13 @@ call vundle#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuring the User Interface
 
-if has("gui_running")
-	set t_Co=256
+let s:gui_running=has("gui_running")
 
-	execute "colorscheme " . g:theme
-else
-	colorscheme desert
+if s:gui_running
+	set t_Co=256
 endif
+
+execute "colorscheme " . g:theme
 
 set guifont=Iosevka\ Medium\ 11
 set encoding=utf8
@@ -81,7 +85,10 @@ set viminfo+=:500
 set timeout ttimeoutlen=50
 
 set hlsearch
-nnoremap <esc> :noh<cr><esc>
+
+if s:gui_running
+    nnoremap <esc> :noh<cr><esc>
+endif
 
 source ${HOME}/.vim/shortcuts.vim
 

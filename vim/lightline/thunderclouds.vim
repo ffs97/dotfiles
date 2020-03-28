@@ -30,7 +30,7 @@ let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Defining Common Colors
 
-let s:bg = [ "#252c36", 17 ]
+let s:bg = [ "#252c36", "none" ]
 let s:fg = [ "#fafafa", 231 ]
 
 let s:red = [ "#ff5555", 203 ]
@@ -39,7 +39,7 @@ let s:green = [ "#88b369", 107 ]
 let s:purple = [ "#800080", 90 ]
 let s:orange = [ "#ffb86c", 215 ]
 let s:yellow = [ "#f1fa8c", 228 ]
-let s:darkgray = [ "#3a3545", 50 ]
+let s:darkgray = [ "#3a3545", "none" ]
 let s:darkkhaki = [ "#b5c79b", 151 ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
