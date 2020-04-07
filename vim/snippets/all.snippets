@@ -1,14 +1,51 @@
+# ======================================================================================
+#   Name:       all.snippets
+#   Author:     Gurpreet Singh
+#   Url:        https://github.com/ffs97/dotfiles/vim/snippets/all.snippets
+#   License:    The MIT License (MIT)
+#
+#   Snippets file for UltiSnips for filetype *
+# ======================================================================================
+
 priority -55
 
-snippet {} "{}" Ai
-{${VISUAL}$1}$0
+global !p
+tw = int(snip.opt("&textwidth", 0))
+if tw == 0:
+	tw = 88
+
+cms = snip.opt("&cms", "")
+endglobal
+
+# --------------------------------------------------------------------------------------
+# Useful Comments and Comment Groups
+
+snippet fileinfo "insert file info template" b
+`!p snip.rv = cms % (" " + ("=" * (tw - len(cms) + 1))) `
+`!p snip.rv = cms % ("") `   Name:       ${1:`!p snip.rv = fn`}
+`!p snip.rv = cms % ("") `   Author:     ${2:Gurpreet Singh}
+`!p snip.rv = cms % ("") `   Url:        ${3:https://github.com/ffs97/$4}${5:`!p
+snip.rv = fn
+`}
+`!p snip.rv = cms % ("") `   License:    ${6:The MIT License (MIT)}
+`!p snip.rv = cms % ("") `
+`!p snip.rv = cms % ("") `   ${7:File Description}
+`!p snip.rv = cms % (" " + ("=" * (tw - len(cms) + 1))) `
 endsnippet
 
-snippet () "()" Ai
-(${VISUAL}$1)$0
+snippet chead "insert comment heading" b
+`!p snip.rv = cms % (" " + ("-" * (tw - len(cms) + 1))) `
+`!p snip.rv = cms % ("") ` ${VISUAL}
 endsnippet
 
-snippet [] "[]" Ai
-[${VISUAL}$1]$0
+snippet cgroup "insert comment group" b
+`!p snip.rv = cms % ("") ` $1 {{
+${2:${VISUAL}}
+`!p snip.rv = cms % ("") ` }}$0
 endsnippet
 
+snippet csgroup "insert comment subgroup" b
+`!p snip.rv = cms % ("") ` $1 {
+${2:${VISUAL}}
+`!p snip.rv = cms % ("") ` }$0
+endsnippet

@@ -25,9 +25,16 @@
 "   A dark vim lighline color scheme heaviliy based on Dracula and One-Half
 " ======================================================================================
 
-let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+let s:p = {
+\     'normal': {},
+\     'insert': {},
+\     'visual': {},
+\     'tabline': {},
+\     'replace': {},
+\     'inactive': {},
+\ }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Defining Common Colors
 
 let s:bg = [ "#252c36", "none" ]
@@ -42,7 +49,7 @@ let s:yellow = [ "#f1fa8c", 228 ]
 let s:darkgray = [ "#3a3545", "none" ]
 let s:darkkhaki = [ "#b5c79b", 151 ]
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Lightline
 
 let s:p.inactive.left   = [ [ s:darkgray, s:bg ], [ s:darkgray, s:bg ] ]

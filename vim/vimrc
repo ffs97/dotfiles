@@ -1,12 +1,12 @@
 "
-"   ███████              ███
-"  ░███░░███            ░███                        ███
-"  ░███ ░░░   ██████    ██████        ████   ████  ░░░    ██████████████
-"  ██████    ░░░░░███  ░░███░        ░░███   ███    ███  ░░███░░███░░███
-" ░░███░      ███████   ░███          ░░███ ███    ░███   ░███ ░███ ░███
-"  ░███      ███░░███   ░███  █        ░░█████     ░███   ░███ ░███ ░███
-"  █████     ░████████  ░░████   ███    ░░███      █████  █████░███ █████
-" ░░░░░      ░░░░░░░░    ░░░░   ░░░      ░░░      ░░░░░  ░░░░░ ░░░ ░░░░░
+"    ███████              ███
+"   ░███░░███            ░███                        ███
+"   ░███ ░░░   ██████    ██████        ████   ████  ░░░    ██████████████
+"   ██████    ░░░░░███  ░░███░        ░░███   ███    ███  ░░███░░███░░███
+"  ░░███░      ███████   ░███          ░░███ ███    ░███   ░███ ░███ ░███
+"   ░███      ███░░███   ░███  █        ░░█████     ░███   ░███ ░███ ░███
+"   █████     ░████████  ░░████   ███    ░░███      █████  █████░███ █████
+"  ░░░░░      ░░░░░░░░    ░░░░   ░░░      ░░░      ░░░░░  ░░░░░ ░░░ ░░░░░
 "
 " ======================================================================================
 "   Name:       fat.vim
@@ -15,10 +15,17 @@
 "   License:    The MIT License (MIT)
 "
 "   Configuration file for [g]vim
+"
+"   Dependencies:
+"       - vim +python (vim)
+"       - Vundle (vim)
+"       - black (python)
+"       - lua-fmt (lua)
+"       - luacheck (lua)
 " ======================================================================================
 
 if $THEME == ""
-    let g:theme="thunderclouds"
+    let g:theme="apocalypse"
 else
     let g:theme=$THEME
 endif
@@ -26,7 +33,7 @@ endif
 set shell=/usr/bin/zsh
 set remap
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Loading Vundle Plugins
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -52,17 +59,15 @@ Plugin 'roxma/nvim-yarp'            " Dependency for deoplete
 Plugin 'roxma/vim-hug-neovim-rpc'   " Dependency for deoplete
 Plugin 'davidhalter/jedi-vim'       " Jedi autocompletion library for vim (python)
 Plugin 'lervag/vimtex'              " Tex compilinging functionality
+Plugin 'godlygeek/tabular'          " Tabular + vertical align functionalities
+Plugin 'doums/coBra'                " Automatic bracket matching functionality
 
 call vundle#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring the User Interface
 
-let s:gui_running=has("gui_running")
-
-if s:gui_running
-    set t_Co=256
-endif
+" set t_Co=16
 
 execute "colorscheme " . g:theme
 
@@ -72,7 +77,7 @@ set guioptions=v
 set noshowmode
 
 set cursorline
-set linespace=5
+set linespace=-1
 set number numberwidth=5
 set clipboard=unnamedplus
 
@@ -86,11 +91,14 @@ autocmd BufEnter * silent! :lchdir %:p:h
 set viminfo+=:500
 set timeout ttimeoutlen=50
 
-set incsearch hlsearch autoread
+set incsearch autoread
+
+silent !stty -ixon
+autocmd VimLeave * silent !stty ixon
 
 source ${HOME}/.vim/shortcuts.vim
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring the Wild Menu
 
 if has("wildmenu")
@@ -105,7 +113,7 @@ if has("wildmenu")
     set wildignore+=*~,*.swp,*.tmp
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Syntax and Indentation
 
 filetype plugin indent on
@@ -116,32 +124,26 @@ endif
 
 autocmd FileType tex,latex,plaintex set syntax=context filetype=tex
 
-set tabstop=4
-set shiftwidth=4
-
+set tabstop=4 shiftwidth=4
 set autoindent expandtab
 
 autocmd FileType markdown set conceallevel=2
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Word Wrap
-
-set wrap
-set linebreak
-set nolist
-set breakindent
 
 ru macros/justify.vim
 vmap <c-j> _j
 
-autocmd FileType markdown,text set textwidth=88 formatoptions+=a
+set textwidth=88
+autocmd FileType markdown,text setlocal wrap linebreak nolist breakindent formatoptions+=a
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Lightline
 
-let g:lightline = {"colorscheme": "thunderclouds"}
+let g:lightline = {"colorscheme": g:theme}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Nerd Commenter
 
 let g:NERDSpaceDelims = 1
@@ -155,69 +157,69 @@ imap <c-q> <c-o><leader>c<Space>
 nmap <c-q> <leader>c<Space>
 vmap <c-q> <leader>c<Space>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Nerd Tree
 
 let NERDTreeRespectWildIgnore=1
 
 nmap <c-b> :NERDTreeToggleVCS<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Autoformat
 
 nmap <F5> :Autoformat<cr>:Neomake<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Goyo
 
 let g:goyo_width=88
 let g:goyo_height=95
 let g:goyo_linenr=0
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Neomake
 
 call neomake#configure#automake('w')
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Ultisnips and YouCompleteMe
 
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
 
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-let g:ycm_key_list_select_completion=["<down>"]
-let g:ycm_key_list_previous_completion=["<up>"]
+let g:ycm_key_list_select_completion = ["<down>"]
+let g:ycm_key_list_previous_completion = ["<up>"]
 let g:ycm_key_list_stop_completion = ["<left>", "<right>"]
 
 let g:ycm_min_num_of_chars_for_completion = 4
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Vimtex
 
-let g:vimtex_quickfix_mode=2
-let g:vimtex_quickfix_autoclose_after_keystrokes=0
-let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_quickfix_autoclose_after_keystrokes = 0
+let g:vimtex_view_method = 'zathura'
 
-let g:vimtex_fold_enabled=1
-let g:vimtex_fold_manual=1
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
 
-let g:vimtex_quickfix_latexlog={
+let g:vimtex_quickfix_latexlog = {
 \     'default' : 0,
 \     'packages' : {
 \         'default' : 0,
 \     },
 \ }
 
-" Note: The following makes vim very slow
+" Note: The following makes vim with open tex files very slow
 " Omnix completion for deoplete {{
 " call deoplete#custom#var('omni', 'input_patterns', {
 " \     'tex': g:vimtex#re#deoplete
 " \ })
 " }}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Deoplete
 
 " Define dictionary {{
@@ -258,21 +260,21 @@ inoremap <expr><space> pumvisible() ? "\<C-y><space>" : "\<space>"
 " }}
 
 " Define some options {{
-let g:acp_enableAtStartup=0
-let deoplete#enable_at_startup=1
-let deoplete#enable_smart_case=1
-let deoplete#sources#syntax#min_keyword_length=3
-let deoplete#camel_case=v:true
-let deoplete#auto_complete_delay=0
-let deoplete#smart_case=v:true
-let deoplete#min_pattern_length=3
+let g:acp_enableAtStartup = 0
+let deoplete#enable_at_startup = 1
+let deoplete#enable_smart_case = 1
+let deoplete#sources#syntax#min_keyword_length = 3
+let deoplete#camel_case = v:true
+let deoplete#auto_complete_delay = 0
+let deoplete#smart_case = v:true
+let deoplete#min_pattern_length = 3
 " }}
 
 " Removing matcher_length {{
 call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 " }}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring Jedi
 
 let g:jedi#use_splits_not_buffers = "right"
@@ -289,6 +291,18 @@ let g:jedi#rename_command = "<leader>r"
 
 " Note: Doesn't work
 " Enable omni completion with jedi {{
-let g:deoplete#sources#jedi#python_path='python3'
+let g:deoplete#sources#jedi#python_path = 'python3'
 autocmd FileType python setlocal omnifunc=python3complete#Complete
 " }}
+
+" --------------------------------------------------------------------------------------
+" Confuguring Autoformat
+
+let g:autoformat_autoindent = 0
+
+let g:formatdef_my_custom_lua = '"luafmt --stdin -l 88 -i " . &shiftwidth'
+let g:formatters_lua = ['my_custom_lua']
+
+let g:formatdef_my_custom_tex = '"latexindent -"'
+let g:formatters_tex = ['my_custom_tex']
+

@@ -7,7 +7,7 @@
 "   ░███  █  ░███░░███ ░███ ░███   ░███ ░███  ░███░░███ ░███░░░     ░███
 "   ░░████   ████░░███ ░████████   █████░████ ░░██████  ░░███████   █████
 "    ░░░░   ░░░░  ░░░  ░░░░░░░░   ░░░░░ ░░░░   ░░░░░░    ░░░░░░░   ░░░░░
-"                                          ████                            ████
+"                                         ████                            ████
 "                 ██                     ░░███                           ░░███
 "               ███              ██████   ░███    ██████  █████ ████      ░███   █████
 "             ████              ███░░███  ░███   ███░░███ ░███ ░███    ███████ ░███░░
@@ -34,18 +34,32 @@ endif
 
 let g:colors_name = "thunderclouds"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Defining Function for Setting Colors
 
 function! s:set_color(group, fg, bg, attr)
 	if type(a:fg) == type([])
-		exec "hi " . a:group . " guifg=" . get(a:fg, 0, "NONE") . " ctermfg=" . get(a:fg, 1, "NONE")
+		exec (
+        \     "hi " .
+        \     a:group .
+        \     " guifg=" .
+        \     get(a:fg, 0, "NONE") .
+        \     " ctermfg=" .
+        \     get(a:fg, 1, "NONE")
+        \ )
 	else
 		exec "hi " . a:group . " guifg=NONE ctermfg=NONE"
 	endif
 
 	if type(a:bg) == type([])
-		exec "hi " . a:group . " guibg=" . get(a:bg, 0, "NONE") . " ctermbg=" . get(a:bg, 1, "NONE")
+		exec (
+        \     "hi " .
+        \     a:group .
+        \     " guibg=" .
+        \     get(a:bg, 0, "NONE") .
+        \     " ctermbg=" .
+        \     get(a:bg, 1, "NONE")
+        \ )
 	else
 		exec "hi " . a:group . " guibg=NONE ctermbg=NONE"
 	endif
@@ -57,7 +71,7 @@ function! s:set_color(group, fg, bg, attr)
 	endif
 endfun
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Defining Common Colors
 
 let s:bg = [ "#252c36", "none" ]
@@ -80,7 +94,7 @@ let s:darkkhaki = [ "#b5c79b", 151 ]
 let s:darkgray = [ "#3a3545", "none" ]
 let s:darkseagreen = [ "#555579", 60 ]
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Setting the Colors
 
 " User interface {{
@@ -155,45 +169,55 @@ call s:set_color("TabLineFill", s:opal, s:darkgray, "")
 call s:set_color("TabLineSel", s:cyan, s:bg, "")
 " }
 
-" Folding
+" Folding {
 call s:set_color("Folded", s:seagreen, "", "")
 call s:set_color("FoldColumn", s:fg, "", "")
+" }
 
-" Signs
+" Signs {
 call s:set_color("SignColumn", s:orange, "", "")
+" }
 
-" Concealed text
+" Concealed text {
 call s:set_color("Conceal", s:fg, "", "")
+" }
 
-" Matching brackets
+" Matching brackets {
 call s:set_color("MatchParen", s:cyan, "", "bold,underline")
+" }
 
-" Vertical split
+" Vertical split {
 call s:set_color("VertSplit", s:darkgray, s:bg, "")
+" }
 
-" Special keys
+" Special keys {
 call s:set_color("Special", s:pink, "", "")
 call s:set_color("SpecialChar", s:fg, "", "")
 call s:set_color("SpecialComment", s:red, "", "")
+" }
 
-" Directory text
+" Directory text {
 call s:set_color("Directory", s:blue, "", "")
+" }
 
-" Popup menu
+" Popup menu {
 call s:set_color("Pmenu", s:fg, s:darkgray, "")
 call s:set_color("PmenuSel", s:blue, s:bg, "bold")
 call s:set_color("PmenuSbar", "", s:seagreen, "")
 call s:set_color("PmenuThumb", "", s:fg, "")
+" }
 
-" Miscellaneous
+" Miscellaneous {
 call s:set_color("ExtraWhitespace", "", s:darkgray, "")
 match ExtraWhitespace /\s\+$/
 
 call s:set_color("OverLength", s:bg, s:darkkhaki, "")
 match OverLength /\%89v./
+" }
 
-" Wild menu
+" Wild menu {
 call s:set_color("WildMenu", s:fg, s:gray, "")
+" }
 
 "
 " TODO: Fix {

@@ -1,14 +1,23 @@
+# ======================================================================================
+#   Name:       tex.snippets
+#   Author:     Gurpreet Singh
+#   Url:        https://github.com/ffs97/dotfiles/vim/snippets/tex.snippets
+#   License:    The MIT License (MIT)
+#
+#   Snippets file for UltiSnips for filetype tex
+# ======================================================================================
+
 global !p
 def fix_indent(snip):
     vim.eval('feedkeys("\<c-f>")')
 endglobal
 
+# --------------------------------------------------------------------------------------
+# Document Styles
+
 snippet dc "add documentclass" b
 \documentclass[${1:10pt}]{${2:article}}${0}
 endsnippet
-
-# --------------------------------------------------------------------------------------
-# Document Styles
 
 # Assignmet {{
 snippet initassign "initialise assignment style" b
@@ -72,7 +81,7 @@ endsnippet
 # }}
 
 # --------------------------------------------------------------------------------------
-# Snippets for Custom Commands and Environments
+# Custom Commands and Environments
 
 # General {{
 snippet margin "margin environment" b
@@ -179,7 +188,7 @@ endsnippet
 # }}
 
 # --------------------------------------------------------------------------------------
-# Snippets for Predefined Commands and Environments
+# Predefined Commands and Environments
 
 post_expand "fix_indent(snip)"
 snippet it "Individual item" b
@@ -217,7 +226,7 @@ snippet all "align(...) labelled environment" b
 endsnippet
 
 # --------------------------------------------------------------------------------------
-# Snippets for Math Commands
+# Math Commands
 
 # Autotriggers {{
 snippet $$ "inline math" Ai

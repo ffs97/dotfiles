@@ -7,7 +7,7 @@
 "   Editor shortcuts for [g]vim
 " ======================================================================================
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring the User Interface
 
 " Tabs and buffers {{
@@ -18,7 +18,17 @@ nmap <a-right> :tabnext<cr>
 nmap <a-s-left> :tabmove -1<cr>
 nmap <a-s-right> :tabmove +1<cr>
 
-nmap <a-w> :bd<cr>
+function! CloseBuffer()
+    if bufname() == ""
+        exec "q"
+    else
+        exec "bd"
+    endif
+endfunction
+
+nmap <a-w> :call CloseBuffer()<cr>
+nmap <leader>d :call CloseBuffer()<cr>
+
 imap <a-w> <c-o>:bd<cr>
 
 nmap <c-s> :w!<cr>
@@ -41,11 +51,11 @@ nmap <c-down> <c-e>
 
 " Terminal {{
 if has("gui_running")
-	nmap <F3> :tab terminal<cr>
+	nmap <F4> :tab terminal<cr>
 endif
 " }}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --------------------------------------------------------------------------------------
 " Configuring the Editor
 
 " Selection {{
@@ -105,3 +115,13 @@ nmap <a-down> ddp
 imap <c-kend> <esc>G$A
 imap <c-khome> <esc>gg0A
 " }}
+
+" Tabular {{
+map <leader>= :Tabular /=<cr>
+" }}
+
+" Get syntax group {{
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" "}}

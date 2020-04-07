@@ -1,9 +1,3 @@
-snippet naughty "naughty notify call"
-require("naughty").notify({text = $0})
-endsnippet
-
-snippet group "lua comment group" b
--- $1 {{
-${2:${VISUAL}}
--- }}
+snippet not "naughty notification"
+require("naughty").notify({text = $1})$0
 endsnippet
