@@ -1,12 +1,12 @@
 "
-"	███████				 ███
-"  ░███░░███			░███						███
-"  ░███ ░░░   ██████	██████		  ████	 ████  ░░░	  ██████████████
-"  ██████	 ░░░░░███  ░░███░		 ░░███	 ███	███  ░░███░░███░░███
-" ░░███░	  ███████	░███		  ░░███ ███    ░███   ░███ ░███ ░███
-"  ░███		 ███░░███	░███  █		   ░░█████	   ░███   ░███ ░███ ░███
-"  █████	 ░████████	░░████	 ███	░░███	   █████  █████░███ █████
-" ░░░░░		 ░░░░░░░░	 ░░░░	░░░		 ░░░	  ░░░░░  ░░░░░ ░░░ ░░░░░
+"   ███████              ███
+"  ░███░░███            ░███                        ███
+"  ░███ ░░░   ██████    ██████        ████   ████  ░░░    ██████████████
+"  ██████    ░░░░░███  ░░███░        ░░███   ███    ███  ░░███░░███░░███
+" ░░███░      ███████   ░███          ░░███ ███    ░███   ░███ ░███ ░███
+"  ░███      ███░░███   ░███  █        ░░█████     ░███   ░███ ░███ ░███
+"  █████     ░████████  ░░████   ███    ░░███      █████  █████░███ █████
+" ░░░░░      ░░░░░░░░    ░░░░   ░░░      ░░░      ░░░░░  ░░░░░ ░░░ ░░░░░
 "
 " ======================================================================================
 "   Name:       fat.vim
@@ -47,9 +47,11 @@ Plugin 'tpope/vim-eunuch'           " OS functionality consistent with open buff
 Plugin 'dhruvasagar/vim-table-mode' " Easy table writing (md, rest) functionality
 Plugin 'SirVer/ultisnips'           " Python wrapper for dynamic snippets
 Plugin 'honza/vim-snippets'         " Multi-language snippet shortcuts
-Plugin 'Valloric/YouCompleteMe'     " Autocompletion module with multi-language support
-
-" Plugin 'lervag/vimtex'
+Plugin 'Shougo/deoplete.nvim'       " Asynchronous autocompletion functionality
+Plugin 'roxma/nvim-yarp'            " Dependency for deoplete
+Plugin 'roxma/vim-hug-neovim-rpc'   " Dependency for deoplete
+Plugin 'davidhalter/jedi-vim'       " Jedi autocompletion library for vim (python)
+Plugin 'lervag/vimtex'              " Tex compilinging functionality
 
 call vundle#end()
 
@@ -59,7 +61,7 @@ call vundle#end()
 let s:gui_running=has("gui_running")
 
 if s:gui_running
-	set t_Co=256
+    set t_Co=256
 endif
 
 execute "colorscheme " . g:theme
@@ -84,11 +86,7 @@ autocmd BufEnter * silent! :lchdir %:p:h
 set viminfo+=:500
 set timeout ttimeoutlen=50
 
-set hlsearch
-
-if s:gui_running
-    nnoremap <esc> :noh<cr><esc>
-endif
+set incsearch hlsearch autoread
 
 source ${HOME}/.vim/shortcuts.vim
 
@@ -96,18 +94,15 @@ source ${HOME}/.vim/shortcuts.vim
 " Configuring the Wild Menu
 
 if has("wildmenu")
-	set wildmenu
+    set wildmenu
 
-	set wildignore+=*.a,*.o
-	set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
-	set wildignore+=*.pdf,*.log,*.aux,*.out
-	set wildignore+=*.tar.*,*.zip
-	set wildignore+=*.pyc,
-	set wildignore+=.DS_Store,.git,.hg,.svn
-	set wildignore+=*~,*.swp,*.tmp
-
-	" Filename autocompletion
-	inoremap <C-F> <C-X><C-F>
+    set wildignore+=*.a,*.o
+    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+    set wildignore+=*.pdf,*.log,*.aux,*.out
+    set wildignore+=*.tar.*,*.zip
+    set wildignore+=*.pyc,
+    set wildignore+=.DS_Store,.git,.hg,.svn
+    set wildignore+=*~,*.swp,*.tmp
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,7 +111,7 @@ endif
 filetype plugin indent on
 syntax on
 if &diff
-	syntax off
+    syntax off
 endif
 
 autocmd FileType tex,latex,plaintex set syntax=context filetype=tex
@@ -127,22 +122,6 @@ set shiftwidth=4
 set autoindent expandtab
 
 autocmd FileType markdown set conceallevel=2
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configuring Autocompletion
-
-inoremap <c-f> <c-x><c-f>
-
-function InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<tab>"
-	else
-		return "\<c-p>"
-	endif
-endfunction
-" inoremap <expr> <tab> InsertTabWrapper()
-" inoremap <s-tab> <c-n>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuring Word Wrap
@@ -174,7 +153,7 @@ let g:NERDToggleCheckAllLines = 1
 
 imap <c-q> <c-o><leader>c<Space>
 nmap <c-q> <leader>c<Space>
-vmap <c-q> <leader>c<Space>gv
+vmap <c-q> <leader>c<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuring Nerd Tree
@@ -203,11 +182,113 @@ call neomake#configure#automake('w')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuring Ultisnips and YouCompleteMe
 
-let g:UltiSnipsJumpForwardTrigger="<a-j>"
-let g:UltiSnipsJumpBackwardTrigger="<a-k>"
-
-let g:ycm_key_list_select_completion=["<Down>"]
-let g:ycm_key_list_previous_completion=["<Up>"]
-let g:ycm_key_list_stop_completion = ["<return>"]
-
 let g:UltiSnipsExpandTrigger="<tab>"
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:ycm_key_list_select_completion=["<down>"]
+let g:ycm_key_list_previous_completion=["<up>"]
+let g:ycm_key_list_stop_completion = ["<left>", "<right>"]
+
+let g:ycm_min_num_of_chars_for_completion = 4
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Vimtex
+
+let g:vimtex_quickfix_mode=2
+let g:vimtex_quickfix_autoclose_after_keystrokes=0
+let g:vimtex_view_method='zathura'
+
+let g:vimtex_fold_enabled=1
+let g:vimtex_fold_manual=1
+
+let g:vimtex_quickfix_latexlog={
+\     'default' : 0,
+\     'packages' : {
+\         'default' : 0,
+\     },
+\ }
+
+" Note: The following makes vim very slow
+" Omnix completion for deoplete {{
+" call deoplete#custom#var('omni', 'input_patterns', {
+" \     'tex': g:vimtex#re#deoplete
+" \ })
+" }}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Deoplete
+
+" Define dictionary {{
+let g:deoplete#sources#dictionary#dictionaries = {
+\     'default' : '',
+\     'vimshell' : $HOME.'/.vimshell_hist',
+\     'scheme' : $HOME.'/.gosh_completions'
+\ }
+" }}
+
+" Define keyword {{
+if !exists('g:deoplete#keyword_patterns')
+    let g:deoplete#keyword_patterns = {}
+endif
+let g:deoplete#keyword_patterns['default'] = '\h\w*'
+" }}
+
+" Completion mappings {{
+inoremap <expr><C-g> deoplete#undo_completion()
+inoremap <expr><C-l> deoplete#complete_common_string()
+" }}
+
+" Close popup and save indent on <cr> {{
+function! s:my_cr_function()
+  return pumvisible() ? "\<c-y>" : "\<cr>"
+endfunction
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" }}
+
+" Close popup and delete on <bs> {{
+inoremap <expr><c-h> deoplete#smart_close_popup()."\<c-h>"
+inoremap <expr><bs> deoplete#smart_close_popup()."\<c-h>"
+" }}
+
+" Complete using <space> {{
+inoremap <expr><space> pumvisible() ? "\<C-y><space>" : "\<space>"
+" }}
+
+" Define some options {{
+let g:acp_enableAtStartup=0
+let deoplete#enable_at_startup=1
+let deoplete#enable_smart_case=1
+let deoplete#sources#syntax#min_keyword_length=3
+let deoplete#camel_case=v:true
+let deoplete#auto_complete_delay=0
+let deoplete#smart_case=v:true
+let deoplete#min_pattern_length=3
+" }}
+
+" Removing matcher_length {{
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+" }}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuring Jedi
+
+let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#popup_select_first = 0
+
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
+" Note: Doesn't work
+" Enable omni completion with jedi {{
+let g:deoplete#sources#jedi#python_path='python3'
+autocmd FileType python setlocal omnifunc=python3complete#Complete
+" }}

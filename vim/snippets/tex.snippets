@@ -1,22 +1,292 @@
-snippet initassign "Initialise assignment tex" b
-\documentclass[${1:10}pt]{article}
+global !p
+def fix_indent(snip):
+    vim.eval('feedkeys("\<c-f>")')
+endglobal
 
+snippet dc "add documentclass" b
+\documentclass[${1:10pt}]{${2:article}}${0}
+endsnippet
+
+# --------------------------------------------------------------------------------------
+# Document Styles
+
+# Assignmet {{
+snippet initassign "initialise assignment style" b
 \usepackage{assign}
 
-\setinstitute{${2:Columbia University in the City of New York}}
-\setcoursetitle{${3:courseCode}: ${5:courseTitle}}
-\setassigncode{${6:assignId}}
-\setauthname{${7:Gurpreet Singh}}
-\setauthroll{${8:gs3056}}
+\setinstitute{${1:Columbia University in the City of New York}}
+\setcoursetitle{${2:code}: ${3:title}}
+\setassigncode{${4:id}}
 \setheaddate{\today}
+\setauthname{${5:Gurpreet Singh}}
+\setauthroll{${6:gs3056}}
 
-\setstartnewpage{${9:TRUE}}
+\setstartnewpage{${7:TRUE}}
 
 \begin{document}
 \makeheader%
 
 $0
 
+\end{document}
+endsnippet
+# }}
+
+# Scribe {{
+snippet initscribe "initialise scribe style" b
+\usepackage{scribe}
+
+\setseriestitle{${1:series}}
+\settitle{${2:title}}
+\setscribecode{${3:id}}
+\setinstrname{${4:instructor}}
+\setauthname{${5:Gurpreet Singh}}
+\setauthemail{${6:gurpreet.s@columbia.edu}}
+
 \begin{document}
+\makeheader%
+
+$0
+
+\end{document}
+endsnippet
+# }}
+
+# Paper {{
+snippet initpaper "initialise paper style" b
+\usepackage{paper}
+
+\setpapertitle{${1:title}}
+\setauthor{${2:Gurpreet Singh}}{${3:gurpreet.s@columbia.edu}}
+${4:\addauthor{$5}{$6}}
+
+\begin{document}
+\makeheader%
+
+${7:\abstract{$8}}
+
+$0
+
+\end{document}
+endsnippet
+# }}
+
+# --------------------------------------------------------------------------------------
+# Snippets for Custom Commands and Environments
+
+# General {{
+snippet margin "margin environment" b
+\begin{margin}{${1:1.5em}}
+
+	${2:${VISUAL}}
+
+\end{margin}$0
 endsnippet
 
+snippet algo "algo environment" b
+\begin{algo}${1:[${2:0.9\textwidth}]}{$3}
+
+	${1:${VISUAL}}
+
+\end{algo}$0
+endsnippet
+# }}
+
+# Assignment {{
+snippet ques "question environment" b
+\begin{question}
+
+	${1:${VISUAL}}
+
+\end{question}$0
+endsnippet
+
+snippet qsec "qsection environment" b
+\begin{qsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{qsection}$0
+endsnippet
+
+snippet qsubsec "qsubsection environment" b
+\begin{qsubsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{qsubsection}$0
+endsnippet
+
+snippet qssubsec "qssubsection environment" b
+\begin{qssubsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{qssubsection}$0
+endsnippet
+# }}
+
+# Scribe {{
+snippet ssec "ssection environment" b
+\begin{ssection}{$1}
+
+	${2:${VISUAL}}
+
+\end{ssection}$0
+endsnippet
+
+snippet ssubsec "ssubsection environment" b
+\begin{ssubsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{ssubsection}$0
+endsnippet
+
+snippet sssubsec "sssubsection environment" b
+\begin{sssubsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{sssubsection}$0
+endsnippet
+# }}
+
+# Paper {{
+snippet psec "psection environment" b
+\begin{psection}{$1}
+
+	${2:${VISUAL}}
+
+\end{psection}$0
+endsnippet
+
+snippet psubsec "psubsection environment" b
+\begin{psubsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{psubsection}$0
+endsnippet
+
+snippet pssubsec "pssubsection environment" b
+\begin{pssubsection}{$1}
+
+	${2:${VISUAL}}
+
+\end{pssubsection}$0
+endsnippet
+# }}
+
+# --------------------------------------------------------------------------------------
+# Snippets for Predefined Commands and Environments
+
+post_expand "fix_indent(snip)"
+snippet it "Individual item" b
+\item $0
+endsnippet
+
+post_expand "fix_indent(snip)"
+snippet itd "description item" b
+\item[$1] $0
+endsnippet
+
+snippet enumba "enumerate environment with bold alphabets"
+\begin{enumerate}[label=\textbf{\textt{(\alph*)}}] b
+	\item $1
+\end{enumerate}$0
+endsnippet
+
+snippet enumbi "enumerate environment with bold roman digits"
+\begin{enumerate}[label=\textbf{\textt{(\roman*)}}] b
+	\item $1
+\end{enumerate}$0
+endsnippet
+
+snippet ali "align(...) environment" b
+\begin{align${1}}
+	${2:${VISUAL}}
+\end{align$1}$0
+endsnippet
+
+snippet all "align(...) labelled environment" b
+\begin{align${1}}
+	${2:\label{eq:$3}}
+	${4:${VISUAL}}
+\end{align$1}$0
+endsnippet
+
+# --------------------------------------------------------------------------------------
+# Snippets for Math Commands
+
+# Autotriggers {{
+snippet $$ "inline math" Ai
+$${VISUAL}$1$$0
+endsnippet
+
+snippet __ "subscript" Ai
+_{${VISUAL}$1}$0
+endsnippet
+
+snippet ^^ "superscript" Ai
+^{${VISUAL}$1}$0
+endsnippet
+# }}
+
+# Math font {{
+snippet mf "mathfrak"
+\mathfrak{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet mc "mathcal"
+\mathcal{${1:${VISUAL:text}}}${0}
+endsnippet
+
+snippet ms "mathscr"
+\mathscr{${1:${VISUAL:text}}}${0}
+endsnippet
+# }}
+
+# General commands {{
+snippet stackrel "\stackrel{}{}"
+\stackrel{${1:above}}{${2:below}} ${0}
+endsnippet
+
+snippet frac "\frac{}{}"
+\frac{${1:num}}{${2:denom}} ${0}
+endsnippet
+
+snippet sum "\sum_{}^{}"
+\sum_{${1:i=1}}^{${2:n}} ${0}
+endsnippet
+
+snippet lim "\lim_{}"
+\lim_{${1:n \to \infty}} ${0}
+endsnippet
+# }}
+
+# Delimiter {{
+snippet lr "left right"
+\left${1} ${0:${VISUAL}} \right$1
+endsnippet
+
+snippet lr( "left( right)"
+\left( ${0:${VISUAL}} \right)
+endsnippet
+
+snippet lr| "left| right|"
+\left| ${0:${VISUAL}} \right|
+endsnippet
+
+snippet lr{ "left{ right}"
+\left\{ ${0:${VISUAL}} \right\}
+endsnippet
+
+snippet lr[ "left[ right]"
+\left[ ${0:${VISUAL}} \right]
+endsnippet
+
+snippet lra "langle rangle"
+\langle ${0:${VISUAL}} \rangle
+endsnippet
+# }}

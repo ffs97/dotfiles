@@ -74,10 +74,10 @@ let s:khaki = [ "#f5f8d6", 230 ]
 let s:purple = [ "#800080", 90 ]
 let s:orange = [ "#ffb86c", 215 ]
 let s:yellow = [ "#f1fa8c", 228 ]
-let s:darkgray = [ "#3a3545", "none" ]
 let s:seagreen = [ "#56b6b2", 73 ]
 let s:wedgewood = [ "#4590a0", 67 ]
 let s:darkkhaki = [ "#b5c79b", 151 ]
+let s:darkgray = [ "#3a3545", "none" ]
 let s:darkseagreen = [ "#555579", 60 ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,6 +188,9 @@ call s:set_color("PmenuThumb", "", s:fg, "")
 " Miscellaneous
 call s:set_color("ExtraWhitespace", "", s:darkgray, "")
 match ExtraWhitespace /\s\+$/
+
+call s:set_color("OverLength", s:bg, s:darkkhaki, "")
+match OverLength /\%89v./
 
 " Wild menu
 call s:set_color("WildMenu", s:fg, s:gray, "")
