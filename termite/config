@@ -1,0 +1,44 @@
+#
+#    ██                                                ██             
+#   ░██                                          ██   ░██             
+#   █████    █████   ███████    █████████████   ░░    █████    █████  
+#  ░░███    ███░░██  ░░███░░██ ░░███░░███░░██    ██  ░░███    ███░░██ 
+#   ░██    ░██████    ░███ ░░   ░███ ░███ ░██   ░██   ░██    ░██████  
+#   ░███   ░███░░     ░██       ░███ ░███ ░██   ░██   ░███   ░███░░   
+#   ░░███  ░░██████   ████      █████░███ ████  ████  ░░███  ░░██████ 
+#    ░░░    ░░░░░░   ░░░░      ░░░░░ ░░░ ░░░░  ░░░░    ░░░    ░░░░░░  
+#
+# =====================================================================================
+#  Name:       termite
+#  Author:     Gurpreet Singh
+#  Url:        https://github.com/ffs97/dotfiles/termite/config
+#  License:    The MIT License (MIT)
+#
+#  Configuration for termite (terminal emulator)
+# =====================================================================================
+
+[options]
+font                  = Iosevka Medium 11
+allow_bold            = true
+audible_bell          = false
+bold_is_bright        = true
+cell_height_scale     = 1.0
+cell_width_scale      = 1.1
+clickable_url         = true
+fullscreen            = true
+icon_name             = terminal
+dynamic_title         = true
+search_wrap           = true
+scroll_on_keystroke   = true
+scroll_on_output      = false
+urgent_on_bell        = true
+scrollback_lines      = -1
+mouse_autohide        = true
+hyperlinks            = true
+browser               = xdg-open
+cursor_blink          = system
+cursor_shape          = block
+filter_unmatched_urls = false
+modify_other_keys     = true
+size_hints            = false
+scrollbar             = off
