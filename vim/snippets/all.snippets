@@ -20,6 +20,27 @@ endglobal
 # --------------------------------------------------------------------------------------
 # Useful Comments and Comment Groups
 
+snippet {} "{...}" b
+{
+${1:${VISUAL}}
+}$0
+endsnippet
+
+snippet () "(...)" b
+(
+${1:${VISUAL}}
+)$0
+endsnippet
+
+snippet [] "[...]" b
+[
+${1:${VISUAL}}
+]$0
+endsnippet
+
+# --------------------------------------------------------------------------------------
+# Useful Comments and Comment Groups
+
 snippet fileinfo "insert file info template" b
 `!p snip.rv = cms % (" " + ("=" * (tw - len(cms) + 1))) `
 `!p snip.rv = cms % ("") `   Name:       ${1:`!p snip.rv = fn`}

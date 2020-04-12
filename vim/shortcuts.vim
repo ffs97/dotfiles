@@ -27,7 +27,7 @@ function! CloseBuffer()
 endfunction
 
 nmap <a-w> :call CloseBuffer()<cr>
-nmap <leader>d :call CloseBuffer()<cr>
+nmap <leader>td :call CloseBuffer()<cr>
 
 imap <a-w> <c-o>:bd<cr>
 

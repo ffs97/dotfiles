@@ -67,8 +67,6 @@ call vundle#end()
 " --------------------------------------------------------------------------------------
 " Configuring the User Interface
 
-" set t_Co=16
-
 execute "colorscheme " . g:theme
 
 set guifont=Iosevka\ Medium\ 11
@@ -91,10 +89,13 @@ autocmd BufEnter * silent! :lchdir %:p:h
 set viminfo+=:500
 set timeout ttimeoutlen=50
 
-set incsearch autoread
-
 silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
+
+set incsearch nohlsearch
+
+set autoread
+autocmd FocusGained,BufEnter * :checktime
 
 source ${HOME}/.vim/shortcuts.vim
 

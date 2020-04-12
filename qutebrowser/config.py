@@ -25,7 +25,7 @@ import json
 
 
 # Set qutebrowser theme
-color_theme = os.getenv("THEME", "thunderclouds")
+color_theme = os.getenv("THEME", "apocalypse")
 
 
 def parse_settings(path):
