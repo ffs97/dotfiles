@@ -22,21 +22,34 @@
 import os
 import re
 import json
+import pywal
+
+from pywal.settings import CACHE_DIR as PYWAL_CACHE_DIR
 
 
-# Set qutebrowser theme
-color_theme = os.getenv("THEME", "apocalypse")
+def load_colors():
+    colors_ = pywal.theme.file(os.path.join(PYWAL_CACHE_DIR, "colors.json"))
+
+    colors = dict()
+    for key, value in colors_["special"].items():
+        colors[key] = value
+
+    colors = dict()
+    for key, value in colors_["colors"].items():
+        colors[key] = value
+
+    return colors
 
 
 def parse_settings(path):
     cur_indent = -1
     keys = []
 
-    mappings = dict()
+    colors = load_colors()
 
     def replace_variable_match(var):
         var = var.group()
-        return mappings[var]
+        return colors[var.strip("$")]
 
     with open(path) as f:
         for line in f:
@@ -51,22 +64,18 @@ def parse_settings(path):
                 keys.pop()
                 cur_indent -= 1
 
-            if key[0] == "$":
-                mappings[key] = val.strip('"')
+            cur_indent = indent
 
-            else:
-                cur_indent = indent
+            keys.append(key)
 
-                keys.append(key)
+            if val != "":
+                val = re.sub(r"\$\w+", replace_variable_match, val)
 
-                if val != "":
-                    val = re.sub(r"\$\w+", replace_variable_match, val)
-
-                    config.set(".".join(keys), json.loads(val))
+                config.set(".".join(keys), json.loads(val))
 
 
 parse_settings(config.configdir / "settings.yml")
-parse_settings(config.configdir / f"colors/{color_theme}.yml")
+parse_settings(config.configdir / "colors.yml")
 
 # Manually setting some rules
 
