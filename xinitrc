@@ -1,8 +1,20 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export THEME=apocalypse
 
-xrandr --dpi 72
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
-redshit -P -0 4500 
+xrandr --output eDP1 --scale 1.25x1.25
 
 exec awesome

@@ -17,13 +17,21 @@
 !   Configuration for Xdefualts
 ! ======================================================================================
 
-! URxvt Appearance {{
-URxvt*.font: xft:Iosevka Medium:style=Regular:size=14
-URxvt*.boldFont: xft:Iosevka Medium:style=Bold:size=14
-URxvt*.italicFont: xft:Iosevka Medium:style=Italic:size=14
-URxvt*.boldItalicFont: xft:Iosevka Medium:style=Bold Italic:size=14
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcdlight
+Xft.rgba: none
 
-URxvt.letterSpace: 0
+! URxvt Appearance {{
+URxvt*.font: xft:Iosevka Medium:style=Regular:size=11
+URxvt*.boldFont: xft:Iosevka Medium:style=Bold:size=11
+URxvt*.italicFont: xft:Iosevka Medium:style=Italic:size=11
+URxvt*.boldItalicFont: xft:Iosevka Medium:style=Bold Italic:size=11
+
+URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 
 URxvt.internalBorder: 20
@@ -37,7 +45,7 @@ URxvt.scrollBar_right: false
 
 URxvt.urgentOnBell: true
 
-URxvt.iso14755: false
+! URxvt.iso14755: false
 ! }}
 
 ! Keybinds {{

@@ -16,13 +16,13 @@ backend: "webengine"
 completion:
     cmd_history_max_items: 100
     delay: 0
-    height: 260
+    height: 217
     min_chars: 1
     open_categories: ["quickmarks", "searchengines", "history"]
     quick: true
     scrollbar:
-        padding: 2
-        width: 12
+        padding: 1
+        width: 6
     show:
     shrink: true
     timestamp_format: "%d-%m-%Y"
@@ -106,22 +106,22 @@ editor:
 
 fonts:
     completion:
-        category: "bold 16pt BebasNeue"
-        entry: "500 12pt Roboto"
-    contextmenu: "12pt IBM Plex Mono Medium"
-    debug_console: "12pt IBM Plex Mono Medium"
+        category: "bold 12pt BebasNeue"
+        entry: "500 9pt Roboto"
+    contextmenu: "9pt IBM Plex Mono Medium"
+    debug_console: "9pt IBM Plex Mono Medium"
     default_family: "IBM Plex Mono Medium"
-    default_size: "12pt"
-    hints: "13pt IBM Plex Sans Medium"
-    keyhint: "12pt IBM Plex Mono Medium"
+    default_size: "9pt"
+    hints: "10pt IBM Plex Sans Medium"
+    keyhint: "9pt IBM Plex Mono Medium"
     messages:
-        error: "13pt IosevkaMedium"
-        info: "13pt IosevkaMedium"
-        warning: "13pt IosevkaMedium"
-    prompts: "500 12pt Roboto"
-    downloads: "500 12pt Roboto"
-    statusbar: "500 12pt Roboto"
-    tabs: "11pt IBM Plex Mono Medium"
+        error: "10pt IosevkaMedium"
+        info: "10pt IosevkaMedium"
+        warning: "10pt IosevkaMedium"
+    prompts: "500 9pt Roboto"
+    downloads: "500 9pt Roboto"
+    statusbar: "500 9pt Roboto"
+    tabs: "8pt IBM Plex Mono Medium"
     web:
         family:
             cursive:
