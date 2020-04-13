@@ -87,7 +87,7 @@ colors:
             bg: "$color8"
     statusbar:
         insert:
-            bg: "$color4"
+            bg: "$color6"
             fg: "$color15"
         normal:
             bg: "$color0"

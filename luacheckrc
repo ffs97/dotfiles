@@ -1,3 +1,4 @@
+--   vi: ft=lua
 -- =====================================================================================
 --   Name:       luacheckrc
 --   Author:     Gurpreet Singh
@@ -6,7 +7,6 @@
 --
 --   Configuration for luacheck (configured for awesomewm development)
 --
---   vi: ft=lua
 -- =====================================================================================
 
 -- Allow defining global variables

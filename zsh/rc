@@ -1,0 +1,133 @@
+#
+#                 ░░██
+#   ██████   ████  ░██           ███████     █████
+#  ░░░░██  ░███░   ░██████       ░░███░░██  ███░░██
+#     ██    ░███   ░███░░██       ░███ ░░  ░███ ░░
+#    ██     ░░░██  ░███░░██       ░██      ░███  ██
+#   ██████  ████   ████░░██  ██   ████     ░░█████
+#  ░░░░░░  ░░░░   ░░░░  ░░  ░░   ░░░░       ░░░░░
+#
+# ======================================================================================
+#   Name:       ~/.zshrc
+#   Author:     Gurpreet Singh
+#   Url:        https://github.com/ffs97/dotfiles/zsh/zshrc
+#   License:    The MIT License (MIT)
+#
+#   Configuration file for zsh shell
+# ======================================================================================
+
+export ZSH="/home/fat-fighter/.oh-my-zsh"
+
+# --------------------------------------------------------------------------------------
+# Configuring OhMyZSH
+
+ZSH_THEME="glass"
+HYPHEN_INSENSITIVE="true"
+UPDATE_ZSH_DAYS=30
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+
+setopt correct
+
+plugins=(git python pip virtualenv screen colored-man-pages colorize command-not-found jump)
+
+source $ZSH/oh-my-zsh.sh
+
+# --------------------------------------------------------------------------------------
+# Configuring user options
+
+export UTILITIES="$HOME/utilities"
+export SOFTWARE="$HOME/software"
+export DOTFILES="$HOME/dotfiles"
+
+export PATH="$(getconf PATH)"
+export PATH="$HOME/.local/bin:$PATH"
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+export EDITOR='vim'
+
+export ARCHFLAGS="-arch x86_64"
+
+local fzf=".fzf.zsh"
+local autosuggestions=".zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+local syntaxhighlighting=".zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+[ -f $HOME/$fzf ] && source $HOME/$fzf
+[ -f $HOME/$autosuggestions ] && source $HOME/$autosuggestions
+[ -f $HOME/$syntaxhighlighting ] && source $HOME/$syntaxhighlighting
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m'
+export FZF_COMPLETION_TRIGGER='?'
+
+# --------------------------------------------------------------------------------------
+# Shell Functions and Aliases
+
+# Pacman {{
+function pg {
+    git clone https://aur.archlinux.org/$1.git
+    cd $1
+    makepkg -Acs --noconfirm
+    if ls $1*.tar.xz 1> /dev/null 2>&1; then
+        sudo pacman -U --noconfirm $1*.tar.xz
+        cd ../
+    else
+        cd ../
+        echo "There was some error in downloading the package"
+    fi
+}
+
+alias pi="sudo pacman -S --noconfirm"
+alias pu="sudo pacman -Syu --noconfirm"
+alias pd="sudo pacman -Rs --noconfirm"
+alias pc="sudo paccache -r"
+alias pk="gpg --recv-key"
+# }}
+
+alias clip="xclip -selection clipboard"
+alias open="xdg-open"
+alias r="ranger"
+
+#  ls {{
+alias ls="exa"
+alias ll="exa -lhT --git --level 1"
+alias lt="exa -lhT --git --level 3"
+#  }}
+
+# --------------------------------------------------------------------------------------
+# Shell Widgets
+
+## Quick find a folder
+function qcd () {
+    folders=(
+        $HOME/dropbox
+        $HOME/courses
+        $HOME/projects
+        $HOME/dotfiles
+        $HOME/utilities
+    )
+    dir=$(find $folders -type d -not -path '*/\.*' -maxdepth 1 | fzf)
+    [ -z $dir ] || cd $dir
+    zle reset-prompt
+}
+zle -N qcd_widget qcd
+
+## Clean the terminal
+function clean () {
+    stty clean
+    tput reset
+    zle reset-prompt
+}
+zle -N clean_widget clean
+
+bindkey "^k" clean_widget
+
+bindkey "^[o" qcd_widget
+bindkey "^[f" fzf-file-widget
+
+# --------------------------------------------------------------------------------------
+# Initializing Conda
+
+. "/home/fat-fighter/software/conda/etc/profile.d/conda.sh"
