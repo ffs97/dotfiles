@@ -13,6 +13,11 @@
 " Tabs and buffers {{
 nmap <c-t> :tabnew<cr>
 
+nmap <leader>th :tabprevious<cr>
+nmap <leader>tl :tabnext<cr>
+nmap <leader>tk :tabmove -1<cr>
+nmap <leader>tj :tabmove +1<cr>
+
 nmap <a-left> :tabprevious<cr>
 nmap <a-right> :tabnext<cr>
 nmap <a-s-left> :tabmove -1<cr>
@@ -29,7 +34,9 @@ endfunction
 nmap <a-w> :call CloseBuffer()<cr>
 nmap <leader>td :call CloseBuffer()<cr>
 
-imap <a-w> <c-o>:bd<cr>
+imap <a-w> <c-o>:call CloseBuffer()<cr>
+
+nmap <c-p> :ls<cr>:b 
 
 nmap <c-s> :w!<cr>
 imap <c-s> <c-o>:w!<cr>
@@ -86,7 +93,6 @@ cmap <c-v> <c-r>"
 cmap <a-v> <c-r>*
 
 nmap <c-d> "ayy"ap$
-imap <c-d> <esc>"ayy<esc>"ap`^i
 vmap <c-d> "ay`>"ap
 
 imap <c-x> <c-o>dd

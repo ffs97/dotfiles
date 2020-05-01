@@ -19,7 +19,7 @@ snippet dc "add documentclass" b
 \documentclass[${1:10pt}]{${2:article}}${0}
 endsnippet
 
-# Assignmet {{
+# Assignment {{{
 snippet initassign "initialise assignment style" b
 \usepackage{assign}
 
@@ -39,9 +39,9 @@ $0
 
 \end{document}
 endsnippet
-# }}
+# }}}
 
-# Scribe {{
+# Scribe {{{
 snippet initscribe "initialise scribe style" b
 \usepackage{scribe}
 
@@ -59,9 +59,9 @@ $0
 
 \end{document}
 endsnippet
-# }}
+# }}}
 
-# Paper {{
+# Paper {{{
 snippet initpaper "initialise paper style" b
 \usepackage{paper}
 
@@ -78,12 +78,12 @@ $0
 
 \end{document}
 endsnippet
-# }}
+# }}}
 
 # --------------------------------------------------------------------------------------
 # Custom Commands and Environments
 
-# General {{
+# General {{{
 snippet margin "margin environment" b
 \begin{margin}{${1:1.5em}}
 
@@ -95,13 +95,13 @@ endsnippet
 snippet algo "algo environment" b
 \begin{algo}${1:[${2:0.9\textwidth}]}{$3}
 
-	${1:${VISUAL}}
+	${4:${VISUAL}}
 
 \end{algo}$0
 endsnippet
-# }}
+# }}}
 
-# Assignment {{
+# Assignment {{{
 snippet ques "question environment" b
 \begin{question}
 
@@ -133,9 +133,9 @@ snippet qssubsec "qssubsection environment" b
 
 \end{qssubsection}$0
 endsnippet
-# }}
+# }}}
 
-# Scribe {{
+# Scribe {{{
 snippet ssec "ssection environment" b
 \begin{ssection}{$1}
 
@@ -159,9 +159,9 @@ snippet sssubsec "sssubsection environment" b
 
 \end{sssubsection}$0
 endsnippet
-# }}
+# }}}
 
-# Paper {{
+# Paper {{{
 snippet psec "psection environment" b
 \begin{psection}{$1}
 
@@ -185,7 +185,7 @@ snippet pssubsec "pssubsection environment" b
 
 \end{pssubsection}$0
 endsnippet
-# }}
+# }}}
 
 # --------------------------------------------------------------------------------------
 # Predefined Commands and Environments
@@ -200,8 +200,8 @@ snippet itd "description item" b
 \item[$1] $0
 endsnippet
 
-snippet enumba "enumerate environment with bold alphabets"
-\begin{enumerate}[label=\textbf{\textt{(\alph*)}}] b
+snippet enumba "enumerate environment with bold alphabets" b
+\begin{enumerate}[label=\textbf{(\alph*)}]
 	\item $1
 \end{enumerate}$0
 endsnippet
@@ -225,10 +225,20 @@ snippet all "align(...) labelled environment" b
 \end{align$1}$0
 endsnippet
 
+snippet cases "cases environment"
+\begin{cases}
+	$1
+\end{cases}$0
+endsnippet
+
+snippet link "hyperlink command"
+\hyperlink{$1}{$2}$0
+endsnippet
+
 # --------------------------------------------------------------------------------------
 # Math Commands
 
-# Autotriggers {{
+# Autotriggers {{{
 snippet $$ "inline math" Ai
 $${VISUAL}$1$$0
 endsnippet
@@ -240,9 +250,9 @@ endsnippet
 snippet ^^ "superscript" Ai
 ^{${VISUAL}$1}$0
 endsnippet
-# }}
+# }}}
 
-# Math font {{
+# Math font {{{
 snippet mf "mathfrak"
 \mathfrak{${1:${VISUAL:text}}}${0}
 endsnippet
@@ -254,27 +264,53 @@ endsnippet
 snippet ms "mathscr"
 \mathscr{${1:${VISUAL:text}}}${0}
 endsnippet
-# }}
+# }}}
 
-# General commands {{
+# General commands {{{
 snippet stackrel "\stackrel{}{}"
-\stackrel{${1:above}}{${2:below}} ${0}
+\stackrel{${1:above}}{${2:below}}${0}
+endsnippet
+snippet \stackrel "\stackrel{}{}" i
+\stackrel{${1:above}}{${2:below}}${0}
 endsnippet
 
 snippet frac "\frac{}{}"
-\frac{${1:num}}{${2:denom}} ${0}
+\frac{${1:num}}{${2:denom}}${0}
+endsnippet
+snippet \frac "\frac{}{}" i
+\frac{${1:num}}{${2:denom}}${0}
 endsnippet
 
 snippet sum "\sum_{}^{}"
 \sum_{${1:i=1}}^{${2:n}} ${0}
 endsnippet
+snippet \sum "\sum_{}^{}" i
+\sum_{${1:i=1}}^{${2:n}} ${0}
+endsnippet
+
+snippet prod "\prod_{}^{}"
+\prod_{${1:i=1}}^{${2:n}} ${0}
+endsnippet
+snippet \prod "\prod_{}^{}" i
+\prod_{${1:i=1}}^{${2:n}} ${0}
+endsnippet
 
 snippet lim "\lim_{}"
-\lim_{${1:n \to \infty}} ${0}
+\lim_{${1:n \to \infty}}${0}
 endsnippet
-# }}
+snippet \lim "\lim_{}" i
+\lim_{${1:n \to \infty}}${0}
+endsnippet
 
-# Delimiter {{
+snippet ff "\func[]{}{}"
+\func${1:[$2]}{${3:f}}{${4:x}}${0}
+endsnippet
+snippet \ff "\func[]{}{}" i
+\func${1:[$2]}{${3:f}}{${4:x}}${0}
+endsnippet
+# }}}
+
+# Delimiter {{{
 snippet lr "left right"
 \left${1} ${0:${VISUAL}} \right$1
 endsnippet
@@ -298,4 +334,4 @@ endsnippet
 snippet lra "langle rangle"
 \langle ${0:${VISUAL}} \rangle
 endsnippet
-# }}
+# }}}

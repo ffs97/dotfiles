@@ -87,7 +87,8 @@ content:
     user_stylesheets: []
     webgl: true
     webrtc_ip_handling_policy: "all-interfaces"
-    windowed_fullscreen: false
+    fullscreen:
+        window: false
     xss_auditing: false
 
 downloads:

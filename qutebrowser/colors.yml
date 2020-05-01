@@ -148,10 +148,10 @@ colors:
                 fg: "$color15"
             selected:
                 even:
-                    bg: "$color4"
+                    bg: "$color6"
                     fg: "$color15"
                 odd:
-                    bg: "$color4"
+                    bg: "$color6"
                     fg: "$color15"
         selected:
             even:

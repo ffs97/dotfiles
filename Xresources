@@ -17,21 +17,27 @@
 !   Configuration for Xdefualts
 ! ======================================================================================
 
+! --------------------------------------------------------------------------------------
+! Configuring Xft
+
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
 Xft.autohint: false
-Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 Xft.lcdfilter: lcdlight
-Xft.rgba: none
+Xft.rgba: rgb
 
-! URxvt Appearance {{
-URxvt*.font: xft:Iosevka Medium:style=Regular:size=11
-URxvt*.boldFont: xft:Iosevka Medium:style=Bold:size=11
-URxvt*.italicFont: xft:Iosevka Medium:style=Italic:size=11
-URxvt*.boldItalicFont: xft:Iosevka Medium:style=Bold Italic:size=11
+! --------------------------------------------------------------------------------------
+! Configuring URxvt and ST
 
-URxvt.letterSpace: -1
+! Appearance {{
+! *.font:           xft:Iosevka Medium:pixelsize=14:antialias=true:autohint=false:hinting=true
+! *.boldFont:       xft:Iosevka Medium:style=Bold:size=12
+! *.italicFont:     xft:Iosevka Medium:style=Italic:size=12
+! *.boldItalicFont: xft:Iosevka Medium:style=Bold Italic:size=12
+
+URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 
 URxvt.internalBorder: 20

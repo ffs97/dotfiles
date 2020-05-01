@@ -1,14 +1,50 @@
 #  vi: ft=zsh
-
+#
+#            ███
+#           ░░██
+#            ░██   █████     ████   ████
+#    █████   ░██  ░░░░░██  ░███░  ░███░
+#   ███░░██  ░██   ██████   ░███   ░███
+#   ░█████   ░██  ███░░██   ░░░██  ░░░██
+#   ███░░    ████ ░███████  ████   ████
+#  ░██████  ░░░░  ░░░░░░░  ░░░░   ░░░░
+#  ░███░░██
+#  ░░█████
+#   ░░░░░ 
+#
+# ======================================================================================
+#    Name:       glass
+#    Author:     Gurpreet Singh
+#    Url:        https://github.com/ffs97/dotfiles/zsh/themes/glass.zsh-theme
+#    License:    The MIT License (MIT)
+# 
+#    A dark zsh prompt based on Bira and Agnoster
+# ======================================================================================
 
 SEGMENT_BEGIN="   "
 SEGMENT_END="   "
+
+autoload colors && colors
+for COLOR in red green yellow blue magenta cyan black white; do
+    eval $COLOR='%{$fg_no_bold[${(L)COLOR}]%}'  #wrap colours between %{ %} to avoid weird gaps in autocomplete
+    eval BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done
+eval RESET='%{$reset_color%}'
 
 colorize() {
     local fg
 
     [[ -n $1 ]] && fg="%F{$1}" || fg="%f"
-    echo -n "%{$fg%}"
+    echo -n "$fg"
+    [[ -n $2 ]] && echo -n $2
+    echo -n "%{$reset_color%}"
+}
+
+bold_colorize() {
+    local fg
+
+    [[ -n $1 ]] && fg="$1" || fg="white"
+    echo -n "%{$fg_bold[$fg]%}"
     [[ -n $2 ]] && echo -n $2
     echo -n "%{$reset_color%}"
 }
@@ -35,7 +71,7 @@ prompt_status() {
 }
 
 prompt_dir() {
-    colorize 12 '%~'
+    bold_colorize blue '%~'
 }
 
 prompt_git() {
@@ -71,10 +107,10 @@ prompt_git() {
         [[ ! -z $(git ls-files -m --exclude-standard) ]] && STATUS="${STATUS}${GII_UNSTAGED}"
         [[ ! -z $(git ls-files -o --exclude-standard) ]] && STATUS="${STATUS}${GIT_UNTRACKED}"
 
-        [[ ! -z $(git log origin/${branch}..HEAD) ]] && STATUS="${STATUS}${GIT_AHEAD}"
-        [[ ! -z $(git log HEAD..origin/${branch}) ]] && STATUS="${STATUS}${GIT_BEHIND}"
+        [[ ! -z $(git log origin/${branch}..HEAD 2> /dev/null) ]] && STATUS="${STATUS}${GIT_AHEAD}"
+        [[ ! -z $(git log HEAD..origin/${branch} 2> /dev/null) ]] && STATUS="${STATUS}${GIT_BEHIND}"
 
-        segment 11 "${PL_BRANCH_CHAR}${branch} ${STATUS}"
+        segment yellow "${PL_BRANCH_CHAR}${branch} ${STATUS}"
     fi
 }
 
@@ -95,5 +131,5 @@ local RETURN_CODE_SYMBOL
     RETURN_CODE_SYMBOL=$'\u2518'
 }
 
-local return_code=$(colorize 1 "%(?..%? ${RETURN_CODE_SYMBOL})")
+local return_code=$(colorize red "%(?..%? ${RETURN_CODE_SYMBOL})")
 RPROMPT="%B${return_code}%b"

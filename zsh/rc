@@ -84,7 +84,7 @@ alias pu="sudo pacman -Syu --noconfirm"
 alias pd="sudo pacman -Rs --noconfirm"
 alias pc="sudo paccache -r"
 alias pk="gpg --recv-key"
-# }}
+#}}
 
 alias clip="xclip -selection clipboard"
 alias open="xdg-open"
@@ -94,7 +94,7 @@ alias r="ranger"
 alias ls="exa"
 alias ll="exa -lhT --git --level 1"
 alias lt="exa -lhT --git --level 3"
-#  }}
+#}}
 
 # --------------------------------------------------------------------------------------
 # Shell Widgets
