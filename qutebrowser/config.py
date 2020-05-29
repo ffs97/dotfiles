@@ -131,6 +131,12 @@ config.bind("tt", "open -t")
 config.bind("t<Left>", "back -t")
 config.bind("t<Right>", "forward -t")
 
+config.bind(
+    "xx", "config-cycle statusbar.hide ;; config-cycle tabs.show always switching"
+)
+config.bind("xt", "config-cycle tabs.show always switching")
+config.bind("xb", "config-cycle statusbar.hide")
+
 config.bind("<Alt-Left>", "tab-prev", mode="insert")
 config.bind("<Alt-Right>", "tab-next", mode="insert")
 config.bind("<Ctrl-E>", "open-editor", mode="insert")

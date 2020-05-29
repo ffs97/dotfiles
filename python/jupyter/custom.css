@@ -1,0 +1,500 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
+/* --------------------------------
+ * GLOBALS
+ ------------------------------- */
+body {
+	background-color: #f8f8f8 !important;
+	color: #828282;
+	font-weight: normal;
+	font-family: "IBM Plex Sans", sans-serif;
+	font-size: 13px;
+	overflow: inherit;
+    padding: 0;
+}
+
+a {
+	color: #383854;
+}
+
+/* --------------------------------
+ * HEADER
+ ------------------------------- */
+.notebook_app > #header {
+	box-shadow: none;
+	background-color: #ffffff;
+	padding-bottom: 10px;
+	position: relative;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+body > #header #header-container {
+	display: none;
+}
+
+#menus {
+	background: transparent;
+	border: none;
+}
+
+#maintoolbar {
+	margin: 0;
+	padding: 0;
+}
+#maintoolbar #maintoolbar-container {
+	display: inline-block;
+	margin: auto;
+}
+#maintoolbar #maintoolbar-container #save-notbook {
+	display: none;
+}
+#maintoolbar #maintoolbar-container #insert_above_below {
+	display: none;
+}
+#maintoolbar #maintoolbar-container #cut_copy_paste {
+	display: none;
+}
+#maintoolbar #maintoolbar-container #move_up_down {
+	display: none;
+}
+#maintoolbar #maintoolbar-container #cell_type {
+	display: none;
+}
+
+.toolbar .btn-group, .toolbar select {
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+.kernel_idle_icon:before {
+	color: #D14187;
+}
+
+.kernel_busy_icon:before {
+	color: #009489;
+}
+
+.navbar-nav > li > a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#kernel_indicator, #modal_indicator,
+#notification_trusted, #readonly-indicator {
+	padding: 0 15px;
+	margin: 10px 0 10px 15px;
+}
+#kernel_indicator:empty, #modal_indicator:empty,
+#notification_trusted:empty, #readonly-indicator:empty {
+	padding: 0;
+	width: 0;
+	margin: 0;
+}
+
+#notification_trusted {
+	margin: 9px 0;
+	display: none !important;
+}
+
+#notification_area {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+}
+#notification_area #notification_kernel {
+	padding: 10px 20px;
+}
+#notification_area #notification_notebook {
+	padding: 10px 20px;
+	background-color: #ffffff77;
+}
+
+/* --------------------------------
+ * NOTEBOOK
+ ------------------------------- */
+div#notebook {
+	padding: 30px 0 0 0;
+	font-family: "IBM Plex Sans", serif;
+}
+
+#site {
+	overflow: inherit;
+	height: unset !important;
+}
+
+#notebook-container {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	padding: 30px 0 150px 0;
+}
+
+.end_space {
+    display: none;
+}
+
+/* --------------------------------
+ * CELLS
+ ------------------------------- */
+div.cell {
+	padding: 0;
+	padding: 15px 40px 5px 0;
+	border: none;
+}
+div.cell:before {
+	left: 0 !important;
+	width: 2px !important;
+}
+
+div.cell.selected {
+	border-radius: 0px;
+	border: none;
+	background: none;
+}
+div.cell.selected:before {
+	background: #42a5f5 !important;
+	z-index: 2;
+}
+
+.edit_mode div.cell.selected:before {
+	background: #c6abaa !important;
+}
+
+div.cell.jupyter-soft-selected {
+	padding-left: 0;
+	background: none;
+}
+div.cell.jupyter-soft-selected:before {
+	background: #66bb6a !important;
+	z-index: 2;
+}
+
+div.prompt {
+	font-family: "Iosevka Medium", monospace;
+	font-size: 12px;
+	line-height: 12px;
+	min-width: unset;
+	width: 75px;
+	color: #888888;
+	background-color: #ffffff;
+	font-style: normal;
+}
+
+div.output_prompt {
+	color: #000000;
+}
+
+div.input_prompt bdi, div.output_prompt bdi {
+	display: none;
+}
+
+.collapsible_headings_toggle .h1,
+.collapsible_headings_toggle .h2,
+.collapsible_headings_toggle .h3,
+.collapsible_headings_toggle .h4,
+.collapsible_headings_toggle .h5,
+.collapsible_headings_toggle .h6 {
+	display: none;
+}
+
+div.out_prompt_overlay {
+	width: 60px;
+	left: 10px;
+}
+
+div.input_area {
+	border-radius: 0px;
+	border: none;
+	padding: 0px 5px;
+}
+
+div.output_wrapper {
+	background-color: #444444;
+}
+
+div.output_subarea {
+	font-weight: normal;
+	font-size: 13px;
+	padding: 15px 10px;
+	max-width: none;
+}
+div.output_subarea pre {
+	color: #ffffff;
+}
+div.output_subarea.text_cell_render, div.output_subarea.output_html {
+	color: #333;
+	background-color: #ffffff;
+}
+div.output_subarea.text_cell_render > div, div.output_subarea.output_html > div {
+	overflow: auto;
+}
+div.output_subarea.output_png {
+	background-color: #ffffff;
+	text-align: center;
+}
+div.output_subarea.output_stderr {
+	background-color: #fbb;
+}
+div.output_subarea.output_stderr pre {
+	color: #444444;
+}
+
+div.output_scroll {
+	box-shadow: none;
+}
+div.output_scroll div.output_subarea {
+	overflow: auto;
+}
+div.output_scroll::-webkit-scrollbar {
+	width: 0 !important;
+}
+
+div.output_collapsed {
+	margin-left: 75px;
+	border-radius: 0;
+	padding: 7px 0;
+}
+div.output_collapsed:before {
+	width: 75px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #ffffff;
+	content: "";
+}
+
+.cm-s-ipython.CodeMirror {
+	background: #F8F8F8;
+	color: #828282;
+}
+
+.cm-s-ipython div.CodeMirror-selected {
+	background: #e8e8e8;
+}
+
+.cm-s-ipython .CodeMirror-gutters {
+	background: #F8F8F8;
+	border-right: 0px;
+}
+
+.cm-s-ipython .CodeMirror-linenumber {
+	color: #b8b8b8;
+	font-size: 12px;
+}
+
+.cm-s-ipython .CodeMirror-cursor {
+	border-left: 1px solid #585858;
+}
+
+.timing_area {
+	padding: 2px 5px !important;
+}
+
+/* --------------------------------
+ * RENDERED HTML
+ ------------------------------- */
+.rendered_html h1,
+.rendered_html h2,
+.rendered_html h3,
+.rendered_html h4,
+.rendered_html h5,
+.rendered_html h6 {
+	font-family: "IBM Plex Sans", serif;
+	margin: 0 !important;
+}
+.rendered_html h1, .rendered_html h2, .rendered_html h3 {
+	font-weight: 700;
+}
+.rendered_html h1 {
+	font-size: 26px;
+	font-weight: 700;
+	color: #000000;
+	text-align: center;
+	padding: 15px 0;
+}
+.rendered_html h2 {
+	font-size: 22px;
+}
+.rendered_html h3 {
+	font-size: 19px;
+}
+.rendered_html h4, .rendered_html h5, .rendered_html h6 {
+	text-decoration: underline;
+	font-style: normal;
+	font-size: 18px;
+	font-weight: 400;
+}
+.rendered_html h5 {
+	font-size: 16px;
+}
+.rendered_html h6 {
+	font-size: 14px;
+}
+
+.rendered_html pre,
+.rendered_html code {
+	color: #828282;
+}
+
+div.output_html {
+	font-size: 0.75rem;
+	font-weight: normal;
+	font-family: "Iosevka Medium", monospace;
+}
+
+table.dataframe {
+	border-collapse: collapse;
+	border: 1px solid gainsboro !important;
+}
+table.dataframe thead {
+	padding-bottom: 10px;
+}
+table.dataframe thead tr {
+	color: #905200;
+	font-style: normal;
+	padding: 5px 10px;
+	border-bottom: 1px solid #828282;
+	vertical-align: middle;
+	text-align: center;
+}
+table.dataframe thead tr th, table.dataframe thead tr:only-child th {
+	vertical-align: middle;
+	text-align: center;
+}
+table.dataframe tbody {
+	padding-top: 5px;
+}
+table.dataframe tbody tr th {
+	background-color: #ffffff;
+	font-style: italic;
+	text-align: right;
+}
+table.dataframe tbody tr td {
+	background-color: #fff9ea;
+	color: #828282;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.table > thead > tr > td.info,
+.table > tbody > tr > td.info,
+.table > tfoot > tr > td.info,
+.table > thead > tr > th.info,
+.table > tbody > tr > th.info,
+.table > tfoot > tr > th.info,
+.table > thead > tr.info > td,
+.table > tbody > tr.info > td,
+.table > tfoot > tr.info > td,
+.table > thead > tr.info > th,
+.table > tbody > tr.info > th,
+.table > tfoot > tr.info > th {
+	background-color: #d9edf7;
+}
+
+/* --------------------------------
+ * CODE ELEMENTS
+ ------------------------------- */
+.CodeMirror code, .CodeMirror kbd, .CodeMirror pre, .CodeMirror samp {
+	font-family: "Iosevka Medium", monospace;
+	font-size: 13px;
+}
+
+.cm-s-ipython span.cm-comment {
+	color: #828282;
+}
+.cm-s-ipython span.cm-atom {
+	color: #D14187;
+}
+.cm-s-ipython span.cm-number {
+	color: #007ad0;
+}
+.cm-s-ipython span.cm-property {
+	color: #D14187;
+}
+.cm-s-ipython span.cm-attribute {
+	color: #688A0A;
+}
+.cm-s-ipython span.cm-keyword {
+	font-weight: normal;
+	color: #D43132;
+}
+.cm-s-ipython span.cm-string {
+	color: #ba9600;
+}
+.cm-s-ipython span.cm-operator {
+	color: #BA5400;
+	font-weight: normal;
+}
+.cm-s-ipython span.cm-builtin {
+	color: #793ac7;
+}
+.cm-s-ipython span.cm-variable {
+	color: #009489;
+}
+.cm-s-ipython span.cm-variable-2 {
+	color: #007ad0;
+}
+.cm-s-ipython span.cm-def {
+	color: #009489;
+}
+.cm-s-ipython span.cm-error {
+	/*background: #FFBDBD;*/
+	color: #D43132;
+}
+.cm-s-ipython span.cm-bracket {
+	color: #828282;
+}
+.cm-s-ipython span.cm-tag {
+	color: #D43132;
+}
+.cm-s-ipython span.cm-link {
+	color: #793ac7;
+}
+.cm-s-ipython span .CodeMirror-matchingbracket {
+	text-decoration: underline;
+	font-weight: 700;
+	color: #828282;
+}
+
+.ansi-red-fg {
+	color: #D43132;
+	font-weight: bold;
+}
+
+.ansi-green-fg {
+	color: #688A0A;
+}
+
+.ansi-cyan-fg {
+	color: #009489;
+}
+
+.ansi-blue-fg {
+	color: #007ad0;
+}
+
+span .ansiblack {
+	color: #828282;
+}
+span .ansiblue {
+	color: #009489;
+}
+span .ansigray {
+	color: #d8d8d8;
+}
+span .ansigreen {
+	color: #688A0A;
+}
+span .ansipurple {
+	color: #793ac7;
+}
+span .ansired {
+	color: #D43132;
+}
+span .ansiyellow {
+	color: #ba9600;
+}
+
+/*# sourceMappingURL=custom.css.map */
