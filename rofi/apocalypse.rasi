@@ -111,7 +111,6 @@ element {
     border: 0;
     padding: 4.5% 1%;
     orientation: vertical;
-    border-radius: 10px;
     spacing: 10px;
 }
 element normal.normal, element alternate.normal {
@@ -126,11 +125,15 @@ element normal.active, element alternate.active {
 }
 element selected.normal {
     text-color: @color15;
-    background-color: @color4;
+    background-color: #00000055;
 }
 element selected.active {
     text-color: @color10;
-    background-color: @color4;
+    background-color: #00000055;
+}
+element selected {
+    border: 5px 0 0 0;
+    border-color: @color4;
 }
 
 element-icon {
@@ -143,15 +146,13 @@ element-text {
 
 inputbar {
     spacing: 0;
-    border: 1px;
-    border-color: @color8;
-    border-radius: 3px;
     padding: 0.5em 1em;
+    border-radius: 50%;
+    opacity: 0.5;
     margin: 0 20%;
-    background-color: @back;
+    background-color: #00000055;
     index: 0;
     children: [entry, case-indicator];
-    foreground-color: white;
 }
 entry {
     horizontal-align: 0.5;
