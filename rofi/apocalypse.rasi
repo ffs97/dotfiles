@@ -1,5 +1,5 @@
 /*  vim: set ft=css:
- * 
+ *
  *  ███████████████████████████████████████████████████████████████████████████████████
  *                                              ░██
  *   █████   ███████   █████    █████   █████   ░██  ██     ██  ███████   ████   █████
@@ -12,77 +12,21 @@
  *          ░░░░                                      ░░░      ░░░░
  *
  * =====================================================================================
- *   Name:       apocalypse
+ *   Name:       launcher
  *   Author:     Gurpreet Singh
- *   Url:        https://github.com/ffs97/awesome-config/themes/apocalypse/theme.lua
+ *   Url:        https://github.com/ffs97/dotfiles/rofi/apocalypse/launcher.rasi
  *   License:    The MIT License (MIT)
  *
- *   A night UI theme for aweosmewm
+ *   A rofi launcher based on apocalypse theme
  * =====================================================================================
  */
 
-configuration {
-    modi: "drun,window";
-
-    fullscreen: true;
-    show-icons: true;
-    show-match: true;
-    sidebar-mode: false;
-    fake-transparency: false;
-    combi-hide-mode-prefix: true;
-
-    drun-display-format: "{icon} {name}";
-    window-format: "<b>{w}//{c}</b>.{t}";
-
-    display-window: "Switch All";
-    display-windowcd: "Switch";
-    display-run: "Run";
-    display-ssh: "SSH";
-    display-drun: "Drun";
-    display-combi: "Do";
-
-    kb-remove-word-back: "Control+BackSpace";
-
-    kb-mode-next: "Alt+Right";
-    kb-mode-previous: "Alt+Left";
-
-    kb-select-1: "";
-    kb-select-2: "";
-    kb-select-3: "";
-    kb-select-4: "";
-    kb-select-5: "";
-    kb-select-6: "";
-    kb-select-7: "";
-    kb-select-8: "";
-    kb-select-9: "";
-    kb-select-10: "";
-    me-select-entry: "MousePrimary";
-    me-accept-entry: "MouseSecondary";
-}
+@import "config"
+@import "colors"
 
 * {
     font: "Iosevka 10";
     background-color: transparent;
-
-    bg: #251b2eaa;
-    fg: #f7f7f7ff;
-
-    color0: #251b2e;
-    color1: #ff4971;
-    color2: #72c373;
-    color3: #f5f8d6;
-    color4: #7372c3;
-    color5: #c778c8;
-    color6: #5baabb;
-    color7: #d9c9d9;
-    color8: #434356;
-    color9: #ff6a6a;
-    color10: #aadbaa;
-    color11: #ffffb3;
-    color12: #b3c6ff;
-    color13: #ff79c6;
-    color14: #3bf2ea;
-    color15: #f7f7f7;
 }
 
 window {
@@ -102,7 +46,6 @@ textbox normal {
 }
 
 listview {
-    fixed-height: 1;
     columns: 6;
     reverse: false;
 }

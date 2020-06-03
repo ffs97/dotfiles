@@ -1,0 +1,71 @@
+{
+  "keys": {
+    "command": {
+      "bind": {
+        "alt-up": "jupyter-notebook:move-cell-up",
+        "alt-down": "jupyter-notebook:move-cell-down",
+        "ctrl-/": "jupyter-notebook:edit-command-mode-keyboard-shortcuts",
+        "alt-r": "jupyter-notebook:restart-kernel",
+        "alt-x": "jupyter-notebook:restart-kernel-and-run-all-cells",
+        "alt-c": "jupyter-notebook:restart-kernel-and-clear-output",
+        "alt-i": "jupyter-notebook:interrupt-kernel",
+        "alt-a": "jupyter-notebook:run-all-cells-above",
+        "alt-b": "jupyter-notebook:run-all-cells-below",
+        "ctrl-_": "jupyter-notebook:split-cell-at-cursor",
+        "ctrl-shift-_": "jupyter-notebook:merge-selected-cells",
+        "ctrl-shift-down": "jupyter-notebook:merge-cell-with-next-cell",
+        "ctrl-shift-up": "jupyter-notebook:merge-cell-with-previous-cell",
+        "shift-l": "jupyter-notebook:toggle-all-line-numbers",
+        "ctrl-shift-m": "jupyter-notebook:toggle-menubar",
+        "ctrl-shift-t": "jupyter-notebook:toggle-toolbar",
+        "ctrl-up": "jupyter-notebook:scroll-notebook-up",
+        "ctrl-down": "jupyter-notebook:scroll-notebook-down",
+        "ctrl-shift-s": "jupyter-notebook:merge-selected-cells",
+        "alt-s": "jupyter-notebook:shutdown-kernel"
+      },
+      "unbind": [
+        "0,0",
+        "i,i",
+        "shift-l"
+      ]
+    }
+  },
+  "load_extensions": {
+    "table_beautifier/main": true,
+    "equation-numbering/main": true,
+    "collapsible_headings/main": true,
+    "nbextensions_configurator/config_menu/main": true,
+    "splitcell/splitcell": true,
+    "notify/notify": true,
+    "varInspector/main": false,
+    "gist_it/main": false,
+    "code_prettify/autopep8": false,
+    "hide_header/main": false,
+    "hide_input_all/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "jupyter-black-master/jupyter-black": true,
+    "toc2/main": false,
+    "ruler/main": false,
+    "python-markdown/main": true,
+    "scroll_down/main": true,
+    "rise/main": true
+  },
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  },
+  "ruler_column": [
+    "88"
+  ],
+  "ruler_color": [
+    "#07ffc1"
+  ],
+  "Notebook": {
+    "Header": false,
+    "Toolbar": false
+  },
+  "rise": {
+    "enable_chalkboard": true
+  }
+}
