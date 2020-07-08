@@ -1,0 +1,592 @@
+//
+//  ███████████████████████████████████████████████████████████████████████████████████
+//                                              ░██                                     
+//   █████   ███████   █████    █████   █████   ░██  ██     ██  ███████   ████   █████ 
+//  ░░░░░██ ░░███░░█  ███░░██  ███░░██ ░░░░░██  ░██  ███    ██ ░░███░░█ ░███░   ███░░██
+//   ██████  ░███ ░█ ░███ ░██ ░███ ░░   ██████  ░██ ░░███  ██   ░███ ░█  ░███  ░██████ 
+//  ███░░██  ░██████ ░███ ░██ ░███  ██ ███░░██  ░██  ░░█████    ░██████  ░░░██ ░███░░  
+//  ░███████ ░███░░  ░░█████  ░░█████  ░███████ ████  ░░░██     ░███░░   ████  ░░██████
+//  ░░░░░░░  ░██      ░░░░░    ░░░░░   ░░░░░░░ ░░░░   █  ██     ░██     ░░░░    ░░░░░░ 
+//           ████                                    ░ ███      ████    
+//          ░░░░                                      ░░░      ░░░░     
+//
+// =====================================================================================
+//   Name:       apocalypse
+//   Author:     Gurpreet Singh
+//   Url:        https://github.com/ffs97/dotfiles/python/jupyter/themes/apocalypse.scss
+//   License:    The MIT License (MIT)
+// 
+//   Apocalypse theme for jupyter notebook
+// =====================================================================================
+
+// Imports {{{
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600;700");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;600;700");
+// }}}
+
+// -------------------------------------------------------------------------------------
+// Global Variables
+
+// Fonts {{{
+$ffamily: "Iosevka Medium", "Inconsolata", "Fira Code", "Source Code Pro", monospace;
+$ffamily-fira: "Fira Code", "Source Code Pro", "Inconsolata", monospace;
+// }}}
+
+// Colours {{{
+$foreground: #f7f7f7;
+$background: #251b2e;
+$cursor: #aec7c6;
+$color0: #251b2e;
+$color1: #ff4971;
+$color2: #72c373;
+$color3: #f5f8d6;
+$color4: #7372c3;
+$color5: #c778c8;
+$color6: #5baabb;
+$color7: #d9c9d9;
+$color8: #434356;
+$color9: #ff6a6a;
+$color10: #aadbaa;
+$color11: #ffffb3;
+$color12: #b3c6ff;
+$color13: #ff79c6;
+$color14: #3bf2ea;
+$color15: #f7f7f7;
+// }}}
+
+// -------------------------------------------------------------------------------------
+// Body
+
+body.notebook_app, body.edit_app {
+    background: $background;
+    overflow: inherit;
+
+    font: {
+        family: $ffamily;
+        weight: normal;
+        stretch: normal;
+        style: normal;
+        size: 13px;
+    }
+}
+
+// -------------------------------------------------------------------------------------
+// Header
+
+#header {
+    height: 0;
+    overflow: hidden;
+}
+
+// Notifications {{{
+#kernel_indicator, #modal_indicator,
+#notification_trusted, #readonly-indicator {
+	padding: 0 15px;
+	margin: 10px 0 10px 15px;
+}
+#kernel_indicator:empty, #modal_indicator:empty,
+#notification_trusted:empty, #readonly-indicator:empty {
+	padding: 0;
+	width: 0;
+	margin: 0;
+}
+
+#notification_trusted {
+	margin: 9px 0;
+	display: none !important;
+}
+
+#notification_area {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+    
+    #notification_kernel {
+        padding: 10px 20px;
+    }
+
+    #notification_notebook {
+        padding: 10px 20px;
+        background-color: #{$color12}f0;
+        color: $color15;
+    }
+}
+// }}}
+
+// -------------------------------------------------------------------------------------
+// Notebook and Editor
+
+#notebook-container {
+    background: $background;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    padding: 15px;
+    width: 100%;
+}
+
+#site::-webkit-scrollbar {
+    display: none;
+}
+
+#texteditor-backdrop {
+    background: $background;
+
+    #texteditor-container {
+        background: $background;
+        box-shadow: none;
+        margin: 0 20px;
+
+        .CodeMirror-vscrollbar, .CodeMirror-hscrollbar {
+            display: none !important;
+        }
+    }
+}
+
+.completions {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+
+    select {
+        font-family: $ffamily;
+        font-size: 13px;
+        color: $color15;
+        border-radius: 0;
+        background-color: $color4; 
+    }
+}
+
+// -------------------------------------------------------------------------------------
+// Cells
+
+// Outer cell {{{
+div.cell, .edit_mode div.cell {
+    padding: 15px 10px 15px 0;
+    margin: -1px 0 0 0;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+
+    &.code_cell, &.code_cell.selected {
+        border: {
+            top: 1px solid #{$color8}aa !important;
+        }
+    }
+
+    &.jupyter-soft-selected {
+        padding-left: 0;
+        background: $color8;
+
+        &:before, &:after {
+            display: none;
+        }
+    }
+
+    &.selected, &.selected.jupyter-soft-selected {
+        padding-left: 0;
+        box-shadow: 0 0 10px;
+        border: none;
+
+        &:before {
+            height: 5px;
+            width: 100%;
+            left: 0;
+            top: 0;
+            display: block;
+
+            background: $color4;
+        }
+        
+        &:after {
+            height: 3px;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            display: block;
+
+            background: $color4;
+            content: "";
+            position: absolute;
+        }
+    }
+}
+
+.edit_mode div.cell {
+    &.selected, &.jupyter-soft-selected, &.selected.jupyter-soft-selected {
+        &:before, &:after {
+            background: $color2;
+        }
+    }
+}
+// }}}
+
+// Prompts {{{
+div.prompt {
+    font-family: "Fira Code";
+    font-size: 12px;
+    width: 50px;
+    min-width: unset;
+
+    &.input_prompt {
+        color: $color6;
+        font-weight: 500;
+    }
+    &.output_prompt {
+        color: transparent;
+    }
+
+    bdi {
+        display: none;
+    }
+
+    &.out_prompt_overlay {
+        width: 50px;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        border: none;
+        border-radius: 0;
+
+        &:hover {
+            background: #ffffff22;
+        }
+    }
+}
+//  }}}
+
+//  Input Area {{{
+div.input_area {
+    border: none;
+    border-radius: 0;
+    background: $color0;
+
+    * {
+        font-family: $ffamily;
+        font-size: 14px;
+    }
+}
+//  }}}
+
+//  Output Area {{{
+div.output_collapsed {
+    margin-left: 75px;
+    border: 1px solid #{$color7}44;
+    border-radius: 0;
+    background: #{$color0}88;
+    color: $color7;
+    padding-bottom: 6px;
+    line-height: 20px;
+
+    &:hover, &:active, &:focus {
+        background: #{$color0}44;
+        color: $color15;
+    }
+}
+
+div.text_cell_render {
+    color: $color7;
+
+    h1, h2, h3, h4, h5, h6 {
+        &:after {
+            color: $color7 !important;
+        }
+    }
+}
+
+div.output_subarea {
+    font-size: 13px;
+    padding: 15px 10px 15px 0;
+    max-width: none;
+    color: $color15;
+
+   * {
+       font-family: $ffamily;
+       font-size: 13px;
+   }
+
+   code, kbd, pre, samp {
+       color: $color15;
+   }
+
+   &.output_png {
+       text-align: center;
+       background: white;
+       opacity: 0.9;
+       margin: 15px 0;
+   }
+
+   &.output_stderr {
+       background: #{$color9};
+       opacity: 0.75;
+       padding-left: 10px;
+       margin-right: 0;
+
+       code, kbd, pre, samp {
+           color: $color0;
+       }
+   }
+
+   &.output_error {
+       font-weight: 500;
+   }
+}
+
+div.output_subarea {
+    overflow: auto;
+    margin-right: 20px;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+
+        &-track {
+            background: $color7;
+        }
+        &-thumb {
+            background: $color6;
+
+            &:hover {
+                background: $color5;
+            }
+        }
+    }
+}
+
+div.output_scroll {
+    box-shadow: inset 0 1px 6px $color0;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+//  }}}
+
+// Miscellaneous {{{
+.collapsible_headings_toggle .h
+{
+    &1, &2, &3, &4, &5, &6 {
+        display: none;
+    }
+}
+//  }}}
+
+// -------------------------------------------------------------------------------------
+// Code Syntax Highlighting
+
+// Inner cells {{{
+div.CodeMirror {
+    background: transparent;
+    color: $color15;
+    
+    .CodeMirror-gutters {
+        background: transparent !important;
+        border-radius: 0;
+        border-right: 1px solid #{$color7}00;
+
+        .CodeMirror-gutter {
+            background: transparent !important;
+        }
+    }
+
+    .CodeMirror-linenumber {
+        color: #{$color7}77;
+        font-size: 12px;
+    }
+
+    .CodeMirror-cursor {
+        border-left: 1px solid $cursor;
+    }
+
+    span.CodeMirror-matchingbracket {
+        text-decoration: underline;
+        font-weight: 700;
+        color: $color10;
+    }
+}
+
+.CodeMirror-selected,
+.CodeMirror-focused .CodeMirror-selected,
+.CodeMirror-line::selection, 
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection {
+    background: $color8;
+}
+// }}}
+
+// ANSI colours {{{
+.ansi-black-fg { color: $color0; }
+.ansi-red-fg { color: $color1 }
+.ansi-green-fg { color: $color2 }
+.ansi-yellow-fg { color: $color3 }
+.ansi-blue-fg { color: $color4 }
+.ansi-magenta-fg { color: $color5 }
+.ansi-cyan-fg { color: $color6 }
+.ansi-gray-fg { color: $color7 }
+.ansi-white-fg { color: $color15 }
+.ansi-black-intense-fg { color: $color8 }
+.ansi-red-intense-fg { color: $color9 }
+.ansi-green-intense-fg { color: $color10 }
+.ansi-yellow-intense-fg { color: $color11 }
+.ansi-blue-intense-fg { color: $color12 }
+.ansi-magenta-intense-fg { color: $color13 }
+.ansi-cyan-intense-fg { color: $color14 }
+.ansi-white-intense-fg { color: $color15 }
+
+.ansi-black-bg { background: $color0; }
+.ansi-red-bg { background: $color1 }
+.ansi-green-bg { background: $color2 }
+.ansi-yellow-bg { background: $color3 }
+.ansi-blue-bg { background: $color4 }
+.ansi-magenta-bg { background: $color5 }
+.ansi-cyan-bg { background: $color6 }
+.ansi-gray-bg { background: $color7 }
+.ansi-white-bg { background: $color15 }
+.ansi-black-intense-bg { background: $color8 }
+.ansi-red-intense-bg { background: $color9 }
+.ansi-green-intense-bg { background: $color10 }
+.ansi-yellow-intense-bg { background: $color11 }
+.ansi-blue-intense-bg { background: $color12 }
+.ansi-magenta-intense-bg { background: $color13 }
+.ansi-cyan-intense-bg { background: $color14 }
+.ansi-white-intense-bg { background: $color15 }
+// }}}
+
+// Code syntax highlighting {{{
+.CodeMirror-line span {
+    color: $color15;
+    &.cm-keyword { color: $color12; font-weight: 400; }
+    &.cm-atom { color: $color0 }
+    &.cm-number { color: $color10 }
+    &.cm-def { color: $color1; font-weight: 700; }
+    &.cm-variable { color: $color15 }
+    &.cm-variable-2 {color: $color14 }
+    &.cm-punctuation { color: $color15 }
+    &.cm-property { color: $color15 }
+    &.cm-operator { color: $color15 }
+    &.cm-comment { color: $color6; }
+    &.cm-string { color: $color3 }
+    &.cm-meta { color: $color0 }
+    &.cm-qualifier { color: $color0 }
+    &.cm-builtin { color: $color1 }
+    &.cm-bracket { color: $color15 }
+    &.cm-tag { color: $color0 }
+    &.cm-attribute { color: $color0 }
+    &.cm-quote { color: $color0 }
+    &.cm-link { color: $color9 }
+    &.cm-error { color: $color1 }
+
+    &.cm-header {
+        color: $color6;
+
+        &-1 {
+            font-size: 26px;
+        }
+        &-2 {
+            font-size: 22px;
+        }
+        &-3 {
+            font-size: 19px;
+        }
+        &-4, &-5, &-6 {
+            font-size: 18px;
+        }
+    }
+
+    &.cm-tab {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+}
+// }}}
+
+// -------------------------------------------------------------------------------------
+// Rendered Elements
+
+// Headings {{{
+.rendered_html {
+    h1 {
+        font-weight: 700;
+        font-size: 26px;
+    	text-align: center;
+        padding: 15px 0;
+        color: $color10;
+    }
+
+    h2 {
+        font-weight: 700;
+        font-size: 22px;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 19px;
+    }
+
+    h4, h5, h6 {
+        text-decoration: underline;
+        font-style: normal;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h6 {
+        font-size: 14px;
+    }
+}
+// }}}
+
+// Tables {{{
+div.output_area .rendered_html table {
+    border-collapse: collapse;
+    border: 1px solid #{$color7}77;
+    margin: 0 auto;
+
+    thead {
+        padding-bottom: 10px;
+
+        tr {
+            padding: 5px 10px;
+
+            th, &:only-child th {
+                vertical-align: middle;
+                text-align: center;
+                color: $color1;
+                border-bottom: 1px solid #{$color7}77;
+            }
+        }
+    }
+
+    tbody {
+        padding-top: 5px;
+        tr {
+            &:nth-child(odd), &:nth-child(even) {
+                background: transparent;
+            }
+
+            th {
+                background: transparent;
+                font-style: italic;
+                text-align: right;
+                color: $color7;
+                border-top: 0;
+            }
+
+            td {
+                background: #{$color8}aa;
+                color: $color7;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                border-top: 1px solid #{$color7}33;
+            }
+        }
+    }
+}
+// }}}
+
+// ------------------------------------------------------------------------------------
+// TODO Pager

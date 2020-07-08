@@ -12,6 +12,9 @@
 *.bbl
 *.blg
 *.out
+*.fdb_latexmk
+*.synctex.gz
+*.toc
 
 *.pyc
 *.o

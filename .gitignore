@@ -1,13 +1,28 @@
+*/logs/*
+*/data/*
+*.vscode*
+*__pycache__*
+
 *.swp
 *.swo
 *~
+
+*.log
+*.aux
+*.bbl
+*.blg
+*.out
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+
+*.pyc
+*.o
+*.ipynb_checkpoint*
 
 *.tar.*
 *.zip
 *.gz*
 
-*.log
-*.out
-*.bbl
-*.blg
-*.aux
+*-env*
+*venv*
