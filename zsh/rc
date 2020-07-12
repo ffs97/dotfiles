@@ -21,6 +21,7 @@ export ZSH="/home/fat-fighter/.oh-my-zsh"
 # --------------------------------------------------------------------------------------
 # Configuring OhMyZSH
 
+# Setting ohmyzsh options {{{
 ZSH_THEME="glass"
 HYPHEN_INSENSITIVE="true"
 UPDATE_ZSH_DAYS=30
@@ -30,27 +31,43 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 setopt correct
 
-plugins=(git python pip virtualenv screen colored-man-pages colorize command-not-found jump)
+# }}}
+
+# Adding zsh plugins {{{
+plugins=(
+    git
+    python
+    pip
+    virtualenv
+    screen
+    colored-man-pages
+    colorize
+    command-not-found
+    ssh-agent
+)
+# }}}
 
 source $ZSH/oh-my-zsh.sh
 
 # --------------------------------------------------------------------------------------
 # Configuring user options
 
-export UTILITIES="$HOME/utilities"
-export SOFTWARE="$HOME/software"
-export DOTFILES="$HOME/dotfiles"
-
+# Setting path {{{
 export PATH="$(getconf PATH)"
 export PATH="$HOME/.local/bin:$PATH"
+# }}}
 
+# Setting global options {{{
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-export EDITOR='vim'
+export EDITOR="vim"
+export TERMINAL="kitty"
 
 export ARCHFLAGS="-arch x86_64"
+# }}}
 
+# Sourcing zsh plugins {{{
 local fzf=".fzf.zsh"
 local autosuggestions=".zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 local syntaxhighlighting=".zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -61,11 +78,12 @@ local syntaxhighlighting=".zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m'
 export FZF_COMPLETION_TRIGGER='?'
+# }}}
 
 # --------------------------------------------------------------------------------------
 # Shell Functions and Aliases
 
-# Pacman {{
+# Pacman {{{
 function pg {
     git clone https://aur.archlinux.org/$1.git
     cd $1
@@ -84,38 +102,37 @@ alias pu="sudo pacman -Syu --noconfirm"
 alias pd="sudo pacman -Rs --noconfirm"
 alias pc="sudo paccache -r"
 alias pk="gpg --recv-key"
-#}}
+# }}}
 
+# Misc {{{
 alias clip="xclip -selection clipboard"
 alias open="xdg-open"
 alias r="ranger"
 
-#  ls {{
+function foxit {
+    (&>/dev/null /opt/foxitsoftware/foxitreader/FoxitReader.sh $@ &)
+}
+
+alias vpn="~/downloads/vpn.sh"
+# }}}
+
+# File listing {{{
 alias ls="exa"
 alias ll="exa -lhT --git --level 1"
 alias lt="exa -lhT --git --level 3"
-#}}
+# }}}
+
+# Editor {{{
+function e() {
+    ($TERMINAL -e $EDITOR $@ &) 2>/dev/null
+}
+# }}}
 
 # --------------------------------------------------------------------------------------
 # Shell Widgets
 
-## Quick find a folder
-function qcd () {
-    folders=(
-        $HOME/dropbox
-        $HOME/courses
-        $HOME/projects
-        $HOME/dotfiles
-        $HOME/utilities
-    )
-    dir=$(find $folders -type d -not -path '*/\.*' -maxdepth 1 | fzf)
-    [ -z $dir ] || cd $dir
-    zle reset-prompt
-}
-zle -N qcd_widget qcd
-
-## Clean the terminal
-function clean () {
+# Clean the terminal {{{
+function clean {
     stty clean
     tput reset
     zle reset-prompt
@@ -123,11 +140,28 @@ function clean () {
 zle -N clean_widget clean
 
 bindkey "^k" clean_widget
+# }}}
 
-bindkey "^[o" qcd_widget
+# Unsuspend a job {{{
+function unsuspend {
+    fg
+}
+zle -N unsuspend_widget unsuspend
+
+bindkey "^[z" unsuspend_widget
+# }}}
+
+# Listing files using fzf
 bindkey "^[f" fzf-file-widget
 
 # --------------------------------------------------------------------------------------
-# Initializing Conda
+# Sourcing Miscellaneous Software
 
+# Conda
 . "/home/fat-fighter/software/conda/etc/profile.d/conda.sh"
+
+# Jump
+eval "$(jump shell)"
+
+# Keychain
+# eval $(keychain --eval --quiet github)

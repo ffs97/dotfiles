@@ -62,6 +62,10 @@ if has("gui_running")
 endif
 " }}
 
+" NERD Tree {{
+nmap <c-n> :NERDTreeToggle<cr>
+" }}
+
 " --------------------------------------------------------------------------------------
 " Configuring the Editor
 
@@ -130,4 +134,10 @@ map <leader>= :Tabular /=<cr>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
     \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" "}}
+" }}
+
+" Commenting {{
+imap <c-q> <c-o><leader>c<Space>
+nmap <c-q> <leader>c<Space>
+vmap <c-q> <leader>c<Space>
+" }}

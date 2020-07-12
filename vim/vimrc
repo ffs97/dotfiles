@@ -107,6 +107,9 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if
 
 source ${HOME}/.vim/shortcuts.vim
 
+" Prevent vim to empty the clipboard on exit
+autocmd VimLeave * call system("xclip -o | xclip -selection c")
+
 " --------------------------------------------------------------------------------------
 " Configuring the Wild Menu
 
@@ -163,10 +166,6 @@ let g:NERDDefaultAlign = "left"
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
-
-imap <c-q> <c-o><leader>c<Space>
-nmap <c-q> <leader>c<Space>
-vmap <c-q> <leader>c<Space>
 
 " --------------------------------------------------------------------------------------
 " Configuring Nerd Tree
