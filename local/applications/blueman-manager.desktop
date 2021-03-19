@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bluetooth Settings
+Comment=Blueman Bluetooth Manager
+Icon=/home/fat-fighter/.icons/bluetooth.svg
+Exec=blueman-manager
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;GNOME;Settings;HardwareSettings;

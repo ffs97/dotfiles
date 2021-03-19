@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=connman-gtk
+Name=WiFi Settings
+Categories=GTK;GNOME;Settings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;HardwareSettings
+X-GNOME-Settings-Panel=connman-gtk
+X-Unity-Settings-Panel=connman-gtk
+Icon=/home/fat-fighter/.icons/wifi.svg

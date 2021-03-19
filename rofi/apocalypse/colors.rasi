@@ -1,4 +1,4 @@
-/*  vim: set ft=css:
+/* vim: set ft=css:
  *
  *  ███████████████████████████████████████████████████████████████████████████████████
  *                                              ░██
@@ -12,104 +12,33 @@
  *          ░░░░                                      ░░░      ░░░░
  *
  * =====================================================================================
- *   Name:       launcher
+ *   Name:       apocalypse
  *   Author:     Gurpreet Singh
- *   Url:        https://github.com/ffs97/dotfiles/rofi/apocalypse/launcher.rasi
+ *   Url:        https://github.com/ffs97/dotfiles/rofi/apocalypse/colors.rasi
  *   License:    The MIT License (MIT)
  *
- *   A rofi launcher based on apocalypse theme
+ *   Apocalypse theme for rofi
  * =====================================================================================
  */
 
-@import "config"
-@import "colors"
-
 * {
-    font: "Iosevka 10";
-    background-color: transparent;
-}
+    bg: #251b2ebb;
+    fg: #f7f7f7ff;
 
-window {
-    padding: 7% 15%;
-    background-color: @bg;
-}
-
-mainbox {
-    spacing: 5%;
-    background-color: transparent;
-}
-
-textbox normal {
-    text-color: @fg;
-    padding: 0;
-    border: 0;
-}
-
-listview {
-    columns: 6;
-    reverse: false;
-}
-
-element {
-    border: 0;
-    padding: 4.5% 1% 3% 1%;
-    orientation: vertical;
-    spacing: 1em;
-}
-element normal.normal, element alternate.normal {
-    text-color: @color7;
-}
-element normal.urgent, element alternate.urgent, element selected.urgent {
-    text-color: @color0;
-    background-color: @color1;
-}
-element normal.active, element alternate.active {
-    text-color: @color10;
-}
-element selected.normal {
-    text-color: @color15;
-    background-color: #00000055;
-}
-element selected.active {
-    text-color: @color10;
-    background-color: #00000055;
-}
-element selected {
-    border: 5px 0 0 0;
-    border-color: @color4;
-}
-
-element-icon {
-    size: 6%;
-    horizontal-align: 0.5;
-}
-element-text {
-    horizontal-align: 0.5;
-    margin: 0 1%;
-}
-
-inputbar {
-    spacing: 0;
-    padding: 0.5em 1em;
-    border-radius: 50%;
-    opacity: 0.5;
-    margin: 0 20%;
-    background-color: #00000055;
-    index: 0;
-    children: [entry, case-indicator];
-}
-entry {
-    horizontal-align: 0.5;
-    font: "Iosevka Medium 11";
-    text-color: @color7;
-}
-case-indicator {
-    text-color: @color5;
-}
-
-sidebar {
-    border: 0;
-    padding: 0em 1em;
-    background-color: @grey;
-    index: 10;
+    color0: #251b2e;
+    color1: #ff4971;
+    color2: #72c373;
+    color3: #f5f8d6;
+    color4: #7372c3;
+    color5: #c778c8;
+    color6: #5baabb;
+    color7: #d9c9d9;
+    color8: #434356;
+    color9: #ff6a6a;
+    color10: #aadbaa;
+    color11: #ffffb3;
+    color12: #b3c6ff;
+    color13: #ff79c6;
+    color14: #3bf2ea;
+    color15: #f7f7f7;
 }

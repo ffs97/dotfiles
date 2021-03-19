@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Jupyter
+Exec=jupyter notebook
+Icon=/home/fat-fighter/.icons/jupyter.svg
+StartupWMClass=crx_mnhkaebcjjhencmpkapnbdaogjamfbcj

@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "Github",
+    "window.zoomLevel": 0,
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontFamily": "Iosevka",
+    "editor.fontSize": 13,
+    "editor.fontFamily": "'IBM Plex Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.formatOnSave": true,
+    "workbench.activityBar.visible": false,
+    "window.menuBarVisibility": "hidden",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.dataScience.askForKernelRestart": false,
+    "workbench.tree.indent": 24,
+    "editor.detectIndentation": false,
+    "terminal.integrated.inheritEnv": false,
+    "editor.rulers": [
+        88
+    ],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#ff408133"
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.vscode": true
+    },
+    "python.pythonPath": "/home/fat-fighter/software/conda/envs/ml/bin/python",
+    "python.formatting.provider": "black"
+}

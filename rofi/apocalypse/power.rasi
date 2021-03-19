@@ -1,0 +1,107 @@
+/*  vim: set ft=css:
+ *
+ *  ███████████████████████████████████████████████████████████████████████████████████
+ *                                              ░██
+ *   █████   ███████   █████    █████   █████   ░██  ██     ██  ███████   ████   █████
+ *  ░░░░░██ ░░███░░█  ███░░██  ███░░██ ░░░░░██  ░██  ███    ██ ░░███░░█ ░███░   ███░░██
+ *   ██████  ░███ ░█ ░███ ░██ ░███ ░░   ██████  ░██ ░░███  ██   ░███ ░█  ░███  ░██████
+ *  ███░░██  ░██████ ░███ ░██ ░███  ██ ███░░██  ░██  ░░█████    ░██████  ░░░██ ░███░░
+ *  ░███████ ░███░░  ░░█████  ░░█████  ░███████ ████  ░░░██     ░███░░   ████  ░░██████
+ *  ░░░░░░░  ░██      ░░░░░    ░░░░░   ░░░░░░░ ░░░░   █  ██     ░██     ░░░░    ░░░░░░
+ *           ████                                    ░ ███      ████
+ *          ░░░░                                      ░░░      ░░░░
+ *
+ * =====================================================================================
+ *   Name:       launcher
+ *   Author:     Gurpreet Singh
+ *   Url:        https://github.com/ffs97/dotfiles/rofi/apocalypse/power.rasi
+ *   License:    The MIT License (MIT)
+ *
+ *   A rofi power manager based on apocalypse theme
+ * =====================================================================================
+ */
+
+configuration {
+    fullscreen: true;
+    show-icons: false;
+    show-match: true;
+    sidebar-mode: false;
+    fake-transparency: false;
+    
+    drun-display-format: "{name}";
+    me-select-entry: "MousePrimary";
+    me-accept-entry: "MouseSecondary";
+}
+@import "colors"
+
+* {
+    background-color: transparent;
+}
+
+window {
+    padding: 30% 0;
+    background-color: @bg;
+}
+
+mainbox {
+    spacing: 5%;
+    background-color: transparent;
+}
+
+listview {
+    reverse: false;
+    layout: horizontal;
+    lines: 3;
+    spacing: 1%;
+    padding: 0 31.4%;
+}
+
+element {
+    border: 0;
+    padding: 0;
+}
+element normal, element alternate {
+    text-color: @color7;
+}
+element selected {
+    text-color: @color15;
+    background-color: #00000055;
+    border: 5px 0 0 0;
+    border-color: @color4;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    font: "Iosevka Slab 20";
+    margin: 8% 5%;
+}
+
+inputbar {
+    spacing: 0;
+    margin: 0 42.5%;
+    /* background-color: #00000055; */
+    index: 0;
+    children: [prompt];
+}
+prompt {
+	background-color: 				transparent;
+	text-color: 					@color6;
+    font: "Iosevka UltraLight 20";
+    horizontal-align: 0.5;
+}
+
+entry {
+    horizontal-align: 0.5;
+    font: "Iosevka Medium 11";
+    text-color: @color7;
+}
+case-indicator {
+    text-color: @color5;
+}
+
+sidebar {
+    border: 0;
+    padding: 0em 1em;
+    background-color: @grey;
+    index: 10;
+}

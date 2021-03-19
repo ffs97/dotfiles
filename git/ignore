@@ -15,6 +15,7 @@
 *.fdb_latexmk
 *.synctex.gz
 *.toc
+*.fls
 
 *.pyc
 *.o

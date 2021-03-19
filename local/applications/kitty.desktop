@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kitty Terminal
+GenericName=Terminal emulator
+Comment=A fast, feature full, GPU based terminal emulator
+TryExec=kitty
+Exec=kitty
+Icon=/home/fat-fighter/.icons/console.svg
+Categories=System;TerminalEmulator;

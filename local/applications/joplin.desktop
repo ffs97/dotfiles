@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Joplin Notes
+Comment=Joplin for Desktop
+Exec=/home/fat-fighter/.joplin/Joplin.AppImage
+Icon=/home/fat-fighter/.icons/editor.svg
+StartupWMClass=Joplin
+Type=Application
+Categories=Office;

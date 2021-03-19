@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Google Assistant
+Comment=Google Assistant based on Electron
+Icon=/home/fat-fighter/.icons/google-assistant.svg
+Exec=/snap/g-assist/current/g-assist
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;GNOME;Settings;HardwareSettings;

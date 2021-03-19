@@ -1,0 +1,53 @@
+/*  vim: set ft=css:
+ * 
+ * =====================================================================================
+ *   Name:       config
+ *   Author:     Gurpreet Singh
+ *   Url:        https://github.com/ffs97/dotfiles/rofi/apocalypse/config.rasi
+ *   License:    The MIT License (MIT)
+ *
+ *   Config for rofi launcher based on apocalypse theme
+ * =====================================================================================
+ */
+
+configuration {
+    modi: "drun,window";
+
+    fullscreen: true;
+    show-icons: true;
+    show-match: true;
+    sidebar-mode: false;
+    fake-transparency: false;
+    combi-hide-mode-prefix: true;
+
+    drun-display-format: "{icon} {name}";
+    window-format: "{w} {t}";
+
+    display-window: "Switch All";
+    display-windowcd: "Switch";
+    display-run: "Run";
+    display-ssh: "SSH";
+    display-drun: "Drun";
+    display-combi: "Do";
+
+    kb-remove-word-back: "Control+BackSpace";
+
+    kb-mode-next: "Alt+Right";
+    kb-mode-previous: "Alt+Left";
+
+    kb-select-1: "";
+    kb-select-2: "";
+    kb-select-3: "";
+    kb-select-4: "";
+    kb-select-5: "";
+    kb-select-6: "";
+    kb-select-7: "";
+    kb-select-8: "";
+    kb-select-9: "";
+    kb-select-10: "";
+    me-select-entry: "MousePrimary";
+    me-accept-entry: "MouseSecondary";
+
+    eh: 1;
+}
+

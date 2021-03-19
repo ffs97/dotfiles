@@ -112,8 +112,6 @@ alias r="ranger"
 function foxit {
     (&>/dev/null /opt/foxitsoftware/foxitreader/FoxitReader.sh $@ &)
 }
-
-alias vpn="~/downloads/vpn.sh"
 # }}}
 
 # File listing {{{

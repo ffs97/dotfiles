@@ -1,0 +1,12 @@
+autodetach on 
+startup_message off 
+hardstatus alwayslastline
+shelltitle "zsh"
+
+nonblock on
+altscreen on
+
+bind ',' prev
+bind '.' next
+
+hardstatus string "%{= kY}%w %-12=%{+ B}%S"

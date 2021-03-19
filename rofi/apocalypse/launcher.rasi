@@ -1,0 +1,116 @@
+/*  vim: set ft=css:
+ *
+ *  ███████████████████████████████████████████████████████████████████████████████████
+ *                                              ░██
+ *   █████   ███████   █████    █████   █████   ░██  ██     ██  ███████   ████   █████
+ *  ░░░░░██ ░░███░░█  ███░░██  ███░░██ ░░░░░██  ░██  ███    ██ ░░███░░█ ░███░   ███░░██
+ *   ██████  ░███ ░█ ░███ ░██ ░███ ░░   ██████  ░██ ░░███  ██   ░███ ░█  ░███  ░██████
+ *  ███░░██  ░██████ ░███ ░██ ░███  ██ ███░░██  ░██  ░░█████    ░██████  ░░░██ ░███░░
+ *  ░███████ ░███░░  ░░█████  ░░█████  ░███████ ████  ░░░██     ░███░░   ████  ░░██████
+ *  ░░░░░░░  ░██      ░░░░░    ░░░░░   ░░░░░░░ ░░░░   █  ██     ░██     ░░░░    ░░░░░░
+ *           ████                                    ░ ███      ████
+ *          ░░░░                                      ░░░      ░░░░
+ *
+ * =====================================================================================
+ *   Name:       launcher
+ *   Author:     Gurpreet Singh
+ *   Url:        https://github.com/ffs97/dotfiles/rofi/apocalypse/launcher.rasi
+ *   License:    The MIT License (MIT)
+ *
+ *   A rofi launcher based on apocalypse theme
+ * =====================================================================================
+ */
+
+@import "config"
+@import "colors"
+
+* {
+    font: "Iosevka 10";
+    background-color: transparent;
+}
+
+window {
+    padding: 7% 15%;
+    background-color: @bg;
+}
+
+mainbox {
+    spacing: 5%;
+    background-color: transparent;
+}
+
+textbox normal {
+    text-color: @fg;
+    padding: 0;
+    border: 0;
+}
+
+listview {
+    columns: 6;
+    reverse: false;
+}
+
+element {
+    border: 0;
+    padding: 4.5% 1% 4.5% 1%;
+    orientation: vertical;
+    spacing: 1em;
+}
+element normal.normal, element alternate.normal {
+    text-color: @color7;
+}
+element normal.urgent, element alternate.urgent, element selected.urgent {
+    text-color: @color0;
+    background-color: @color1;
+}
+element normal.active, element alternate.active {
+    text-color: @color10;
+}
+element selected.normal {
+    text-color: @color15;
+    background-color: #00000055;
+}
+element selected.active {
+    text-color: @color10;
+    background-color: #00000055;
+}
+element selected {
+    border: 5px 0 0 0;
+    border-color: @color4;
+}
+
+element-icon {
+    size: 6%;
+    horizontal-align: 0.5;
+}
+element-text {
+    size: 50%;
+    horizontal-align: 0.5;
+    margin: 0 1%;
+}
+
+inputbar {
+    spacing: 0;
+    padding: 0.5em 1em;
+    border-radius: 50%;
+    opacity: 0.5;
+    margin: 0 20%;
+    background-color: #00000055;
+    index: 0;
+    children: [entry, case-indicator];
+}
+entry {
+    horizontal-align: 0.5;
+    font: "Iosevka Medium 11";
+    text-color: @color7;
+}
+case-indicator {
+    text-color: @color5;
+}
+
+sidebar {
+    border: 0;
+    padding: 0em 1em;
+    background-color: @grey;
+    index: 10;
+}

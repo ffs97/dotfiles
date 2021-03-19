@@ -1,0 +1,23 @@
+#   ███████              ███                          ████      
+#  ░███░░███            ░███                         ░░███      
+#  ░███ ░░░   ██████    ██████         █████   █████  ░███      
+#  ██████    ░░░░░███  ░░███░        ░███░░  ░███░░   ░███      
+# ░░███░      ███████   ░███          ░████   ░████   ░███████  
+#  ░███      ███░░███   ░███  █       ░░░███  ░░░███  ░███░░███ 
+#  █████     ░████████  ░░████   ███  █████   █████   ████░░███ 
+# ░░░░░      ░░░░░░░░    ░░░░   ░░░  ░░░░░   ░░░░░   ░░░░  ░░░  
+####################################################################################################
+
+Host fat-git
+    AddKeysToAgent yes
+    HostName github.com
+    User git
+    IdentityFile */.ssh/github
+    IdentitiesOnly yes
+
+Host vm
+    User gurpreet.singh1
+    HostName gurpreet-singh1.ubvm.nutanix.com
+    TCPKeepAlive yes
+    ServerAliveInterval 120
+    ServerAliveCountMax 10

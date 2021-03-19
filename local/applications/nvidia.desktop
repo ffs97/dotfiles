@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=NVIDIA X Settings
+Comment=Configure NVIDIA X Server Settings
+Exec=/usr/bin/nvidia-settings
+Icon=/home/fat-fighter/.icons/nvidia.svg
+Categories=Settings;HardwareSettings;

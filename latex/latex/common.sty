@@ -1,0 +1,623 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin = 1in]{geometry}
+\usepackage{sectsty}
+\usepackage{amsmath, amssymb, mathtools, bm, amsthm}
+\usepackage{scrextend}
+\usepackage{tikz,forest}
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\usepackage{xspace}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage{mdframed}
+\usepackage{hyperref}
+\usepackage{framed}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage[normalem]{ulem}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{nicefrac}
+\usepackage{etoolbox}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{anyfontsize}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage[numbers]{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{bbm}
+\usepackage{xparse}
+\usepackage{silence}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[acronym,smallcaps]{glossaries}
+
+\usepackage{ifluatex}
+\ifluatex
+  \usepackage{pdftexcmds}
+  \makeatletter
+  \let\pdfstrcmp\pdf@strcmp
+  \let\pdffilemoddate\pdf@filemoddate
+  \makeatother
+\fi
+\usepackage{svg}
+\usepackage{svg}
+
+\usetikzlibrary{arrows,automata,bayesnet}
+
+\WarningFilter{latex}{Command}
+
+%% General Formatting
+
+% Increasing Line Spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% Larger Brackets with \left and \right
+\delimitershortfall=-0pt
+
+% Set paragraph indent to zero and skip to 1em
+\setlength\parindent{0em}
+\setlength\parskip{1em}
+% Set long table indent to zero
+\setlength{\LTleft}{0em}
+
+\newcommand{\zerodisplayskips}{
+    \setlength{\abovedisplayskip}{3pt}
+    \setlength{\belowdisplayskip}{2pt}
+    \setlength{\abovedisplayshortskip}{0pt}
+    \setlength{\belowdisplayshortskip}{0pt}
+}
+% \appto{\normalsize}{\zerodisplayskips}
+% \appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+
+% Self Defined Colors
+\definecolor{silver}{RGB}{220, 220, 220}
+\definecolor{anti-flashwhite}{rgb}{0.95, 0.95, 0.96}
+
+% Fonts
+\renewcommand{\ttdefault}{lmtt}
+\renewcommand{\sfdefault}{cmss}
+% \renewcommand{\rmdefault}{ppl}
+\renewcommand{\rmdefault}{bch}
+
+% Title Numbering and Label Font Styles
+\sectionfont{\normalfont\fontsize{1em}{12}\selectfont\bfseries}
+\subsectionfont{\normalfont\fontsize{1em}{12}\fontfamily{qag}\selectfont}
+\subsubsectionfont{\normalfont\fontsize{1.1em}{12}\selectfont\bfseries}
+\chapternumberfont{\fontsize{0.95em}{12}\selectfont}
+\chaptertitlefont{\fontsize{0.9em}{12}\selectfont}
+
+% \renewcommand{\thesection}{{\fontfamily{lmss}\selectfont \arabic{section}}}
+% \renewcommand{\thesubsection}{{\fontfamily{lmss}\selectfont \arabic{section}.\arabic{subsection}}}
+% \renewcommand{\thesubsubsection}{{\fontfamily{lmss}\selectfont \arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}}
+
+% Title Spacing
+\titlespacing{\section}{0em}{1em}{0.8em}
+\titlespacing{\subsection}{0em}{0.8em}{0em}
+\titlespacing{\subsubsection}{0em}{0.8em}{0em}
+
+% Change line number format in algorithms
+%\algrenewcommand\alglinenumber[1]{\footnotesize{#1} \quad}
+%\AtBeginEnvironment{algorithmic}{\linespread{1.1}\ttfamily\fontseries{l}\selectfont}
+
+% Black urls for bib items
+\AtBeginEnvironment{thebibliography}{%
+	\hypersetup{%
+		linkcolor=black,
+		filecolor=black,
+		urlcolor=black
+	}
+}
+
+\AtBeginEnvironment{proof}{%
+	\setlength\parindent{0pt}
+	\setlength\parskip{0.8em}
+}
+
+% Change vertical cell padding for tables
+\def\arraystretch{1.5}
+
+% Hyperlinks
+% \hypersetup{%
+%     colorlinks=true,
+%     linkcolor=black,
+%     citecolor=red,
+%     filecolor=magenta,
+%     urlcolor=cyan,
+% }
+
+\AtBeginDocument{%
+    \hypersetup{
+        citecolor=Violet,
+        linkcolor=Red,   
+        urlcolor=Magenta
+    }
+}
+% \hypersetup{linkcolor=green}
+
+% Add spacing before footnote
+\addtolength{\skip\footins}{1.5em}
+
+% Avoid overfull in Bibliography
+\apptocmd{\thebibliography}{\raggedright}{}{}
+
+% Set compat for PgfPlots
+\pgfplotsset{compat=1.5}
+
+
+%% Text Formatting
+\newcommand{\bt}[1]{\textbf{#1}}
+\newcommand{\st}[1]{\textsc{#1}}
+\newcommand{\et}[1]{\textit{#1}}
+\newcommand{\ut}[1]{\uline{#1}}
+\newcommand{\ct}[1]{\texttt{#1}}
+\newcommand{\ft}[1]{{\sffamily #1}}
+
+
+%% List Formatting
+\newcommand{\ditem}[1]{%
+	\bt{\ft{#1}}\;
+}
+
+
+%% Left Rule box environment
+\newmdenv[
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	skipabove=\topsep,
+	skipbelow=\topsep
+]{siderule}
+
+
+%% Formatted Letters
+\def\LatinUpper{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+\def\LatinLower{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
+
+% Caligraphic fonts
+\newcommand{\genCal}[1]{\expandafter\newcommand\csname c#1\endcsname{{\mathcal #1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genCal\i
+}
+
+% Blackboard fonts
+\newcommand{\genBb}[1]{\expandafter\newcommand\csname b#1\endcsname{{\mathbb #1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genBb\i
+}
+
+% Fraktur fonts
+\newcommand{\genFk}[1]{\expandafter\newcommand\csname k#1\endcsname{{\mathfrak #1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genFk\i
+}
+
+% Text letters
+\newcommand{\mathtext}[1]{\expandafter\newcommand\csname s#1\endcsname{\text{#1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\mathtext\i
+}
+
+\newcommand{\genFkl}[1]{\expandafter\newcommand\csname k#1\endcsname{{\mathfrak #1}}}
+\@for\i:=\LatinLower\do{%
+	\expandafter\genFkl\i
+}
+
+% Vectors
+\renewcommand{\vec}[1]{{\mathbf{#1}}}
+\newcommand{\genLatinVec}[1]{\expandafter\newcommand\csname v#1\endcsname{{\vec #1}}}
+\@for\i:=\LatinLower\do{%
+	\expandafter\genLatinVec\i
+}
+
+\newcommand{\genLatinVecU}[1]{\expandafter\newcommand\csname v#1\endcsname{{\vec #1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genLatinVecU\i
+}
+
+% Random Vectors
+\newcommand{\randvec}[1]{{\ut{#1}}}
+\newcommand{\genLatinRandVec}[1]{\expandafter\newcommand\csname u#1\endcsname{{\randvec #1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genLatinRandVec\i
+}
+% Greek symbol vectors
+\def\mydefgreek#1{\expandafter\def\csname v#1\endcsname{\text{\boldmath$\mathbf{\csname #1\endcsname}$}}}
+\def\mydefallgreek#1{\ifx\mydefallgreek#1\else\mydefgreek{#1}
+\lowercase{\mydefgreek{#1}}\expandafter\mydefallgreek\fi}
+\mydefallgreek {alpha}{beta}{gamma}{delta}{epsilon}{varepsilon}{zeta}{eta}{theta}{vartheta}{iota}{kappa}{lambda}{mu}{nu}{xi}{omicron}{pi}{rho}{varrho}{sigma}{tau}{upsilon}{phi}{varphi}{chi}{psi}{omega}\mydefallgreek
+
+% Upper Greek symbol vectors
+\def\mydefugreek#1{\expandafter\def\csname v#1\endcsname{\text{\boldmath$\mathbf{\csname #1\endcsname}$}}}
+\def\mydefallugreek#1{\ifx\mydefallugreek#1\else\mydefugreek{#1}
+\lowercase{\mydefugreek{#1}}\expandafter\mydefallugreek\fi}
+\mydefallugreek{Gamma}{Delta}{Theta}{Lambda}{Xi}{Sigma}{Upsilon}{Phi}{Psi}{Omega}\mydefallugreek
+
+% Approximate Symbols
+\newcommand{\genApproxU}[1]{\expandafter\newcommand\csname w#1\endcsname{\widehat{#1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genApproxU\i
+}
+
+\def\mydefgreek#1{\expandafter\def\csname w#1\endcsname{\text{$\widehat{\csname #1\endcsname}$}}}
+\def\mydefallgreek#1{\ifx\mydefallgreek#1\else\mydefgreek{#1}
+\lowercase{\mydefgreek{#1}}\expandafter\mydefallgreek\fi}
+\mydefallgreek {alpha}{beta}{gamma}{delta}{epsilon}{varepsilon}{zeta}{eta}{theta}{vartheta}{iota}{kappa}{lambda}{mu}{nu}{xi}{omicron}{pi}{rho}{varrho}{sigma}{tau}{upsilon}{phi}{varphi}{chi}{psi}{omega}\mydefallgreek
+
+\def\mydefugreek#1{\expandafter\def\csname w#1\endcsname{\text{$\widehat{\csname #1\endcsname}$}}}
+\def\mydefallugreek#1{\ifx\mydefallugreek#1\else\mydefugreek{#1}
+\lowercase{\mydefugreek{#1}}\expandafter\mydefallugreek\fi}
+\mydefallugreek{Gamma}{Delta}{Theta}{Lambda}{Xi}{Sigma}{Upsilon}{Phi}{Psi}{Omega}\mydefallugreek
+
+% Overline Symbols
+\newcommand{\genOverlineU}[1]{\expandafter\newcommand\csname x#1\endcsname{\overline{#1}}}
+\@for\i:=\LatinUpper\do{%
+	\expandafter\genOverlineU\i
+}
+
+\def\mydefgreek#1{\expandafter\def\csname x#1\endcsname{\text{$\overline{\csname #1\endcsname}$}}}
+\def\mydefallgreek#1{\ifx\mydefallgreek#1\else\mydefgreek{#1}
+\lowercase{\mydefgreek{#1}}\expandafter\mydefallgreek\fi}
+\mydefallgreek {alpha}{beta}{gamma}{delta}{epsilon}{varepsilon}{zeta}{eta}{theta}{vartheta}{iota}{kappa}{lambda}{mu}{nu}{xi}{omicron}{pi}{rho}{varrho}{sigma}{tau}{upsilon}{phi}{varphi}{chi}{psi}{omega}\mydefallgreek
+
+\def\mydefugreek#1{\expandafter\def\csname x#1\endcsname{\text{$\overline{\csname #1\endcsname}$}}}
+\def\mydefallugreek#1{\ifx\mydefallugreek#1\else\mydefugreek{#1}
+\lowercase{\mydefugreek{#1}}\expandafter\mydefallugreek\fi}
+\mydefallugreek{Gamma}{Delta}{Theta}{Lambda}{Xi}{Sigma}{Upsilon}{Phi}{Psi}{Omega}\mydefallugreek
+
+% Vector numerals
+\newcommand{\vzero}{\vec{0}}
+\newcommand{\vone}{\vec{1}}
+
+%% Table Column Types
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+%% Brackets
+\newcommand{\set}[1]{\left\{{#1}\right\}}
+\newcommand{\brac}[1]{\left[\,{#1}\,\right]}
+\newcommand{\para}[1]{\left({#1}\right)}
+\newcommand{\angl}[1]{\left\langle{#1}\right\rangle}
+
+%% Math Text
+
+\newcommand{\mt}[1]{\text{#1}\,\,}
+\newcommand{\qmt}[1]{\,\,\text{#1}\,\,}
+\newcommand{\mcmnt}[1]{&\left[ \text{#1} \right]}
+\newcommand{\mdef}[1]{\mt{\bt{\ft{#1:}}}&&}
+
+
+%% Vertical Spacing
+\newcommand{\sbr}{\vspace{2mm}\xspace}
+\newcommand{\br}{\vspace{1em}\xspace}
+\newcommand{\lbr}{\vspace{3mm}\xspace}
+\newcommand{\nbr}{\vspace{5mm}\xspace}
+
+
+%% Math Functions
+\newcommand{\func}[3][]{%
+	{#2}\ifthenelse{\equal{#1}{}}{}{_{#1}} \para{#3}
+}
+\newcommand{\tfunc}[3][]{%
+	\text{#2}\ifthenelse{\equal{#1}{}}{}{_{#1}} \para{#3}
+}
+\newcommand{\ffunc}[3][]{%
+	\text{\ft{#2}}\ifthenelse{\equal{#1}{}}{}{_{#1}} \para{#3}
+}
+\newcommand{\funcinv}[3][]{%
+	\func{\ifthenelse{\equal{#1}{}}{{#2}^{-1}}{\para{{#2}^{#1}}^{-1}}}{#3}
+}
+
+\newcommand{\sigmoid}[1]{\func{\sigma}{#1}}
+
+\newcommand{\prob}[2][]{%
+	\ifthenelse{\equal{#1}{}}{\bP}{\underset{#1}{\bP}}\brac{#2}
+}
+\newcommand{\aprob}[2][]{%
+	\ifthenelse{\equal{#1}{}}{\widetilde{\bP}}{\underset{#1}{\widetilde{\bP}}}\brac{#2}
+}
+
+\newcommand{\lagr}[2][]{%
+	\ifthenelse{\equal{#1}{}}{\cL}{\underset{#1}{\cL}}\brac{#2}
+}
+
+\newcommand{\der}[2]{\frac{d \para{#1}}{d \para{#2}}}
+\newcommand{\ders}[1]{\frac{d}{d {#1}}}
+\newcommand{\derp}[2]{\frac{\delta \para{#1}}{\delta \para{#2}}}
+
+\newcommand{\abs}[1]{\left| \,#1\, \right|}
+\newcommand{\norm}[1]{\left\|\, #1 \,\right\|}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\dotp}[2]{\angl{#1,\;#2}}
+\renewcommand{\exp}[1]{e^{#1}}
+\newcommand{\texp}[1]{\tfunc{exp}{#1}}
+\newcommand{\fact}[1]{\para{#1}!}
+\newcommand{\kld}[2]{\tfunc{KL}{#1\,\big|\big|\,#2}}
+\newcommand{\dirac}[2]{\func[\,#1]{\delta}{#2}}
+
+\newcommand{\compl}{\overline}
+
+\newcommand{\logp}[2][]{%
+	\ifthenelse{\equal{#1}{}}{\log\para{#2}}{\text{log}_{#1}\para{#2}}
+}
+
+\newcommand{\is}[1]{\cI\,\para{#1}}
+\newcommand{\trace}[1]{\tfunc{Tr}{#1}}
+\newcommand{\tr}[1]{{#1}^{\text{\fontsize{6}{6}\selectfont T}}}
+\newcommand{\comp}[1]{{#1}^{\text{C}}}
+
+\newcommand{\E}[2][]{%
+	\ifthenelse{\equal{#1}{}}{\bE}{\underset{#1}{\bE}}\brac{#2}
+}
+\newcommand{\var}[2][]{%
+	\tfunc[#1]{Var}{#2}
+}
+\newcommand{\covar}[2][]{%
+	\tfunc[#1]{Cov}{#2}
+}
+\newcommand{\vare}[2][]{%
+	\func[#1]{\hat{\text{Var}}}{#2}
+}
+\newcommand{\covare}[2][]{%
+	\func[#1]{\hat{\text{Cov}}}{#2}
+}
+
+\newcommand{\elbo}[1]{\cL\para{#1}}
+
+\newcommand{\err}[2][]{\text{er}#1\brac{#2}}
+\newcommand{\errs}[2][]{\text{er}#1\hat{\brac{#2}}}
+
+\newcommand{\rgrt}[2][]{\cR#1\brac{#2}}
+
+
+%% Arrows
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lla}{\longleftarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ba}{\leftrightarrow}
+\newcommand{\lba}{\longleftrightarrow}
+
+\newcommand{\doubleimplies}{\Longleftrightarrow}
+
+%% Operators
+\newcommand{\deq}{\overset{\Delta}{=}}
+
+
+% Spacing
+\newcommand{\eq}[1][]{\ifthenelse{\equal{#1}{}}{\  = \ }{\  \overset{#1}{=} \ }}
+\newcommand{\qimpl}[1][]{\ifthenelse{\equal{#1}{}}{\  \implies \ }{\  \overset{#1}{\implies} \ }}
+\newcommand{\qsim}[1][]{\ifthenelse{\equal{#1}{}}{\  \sim \ }{\  \overset{#1}{\sim} \ }}
+\newcommand{\qprop}[1][]{\ifthenelse{\equal{#1}{}}{\  \propto \ }{\  \overset{#1}{\propto} \ }}
+\newcommand{\qlt}[1][]{\ifthenelse{\equal{#1}{}}{\  < \ }{\  \overset{#1}{<} \ }}
+\newcommand{\qgt}[1][]{\ifthenelse{\equal{#1}{}}{\  > \ }{\  \overset{#1}{>} \ }}
+\newcommand{\qle}[1][]{\ifthenelse{\equal{#1}{}}{\  \le \ }{\  \overset{#1}{\le} \ }}
+\newcommand{\qge}[1][]{\ifthenelse{\equal{#1}{}}{\  \ge \ }{\  \overset{#1}{\ge} \ }}
+\newcommand{\qla}[1][]{\ifthenelse{\equal{#1}{}}{\  \la \ }{\  \overset{#1}{\la} \ }}
+\newcommand{\qlla}[1][]{\ifthenelse{\equal{#1}{}}{\  \lla \ }{\  \overset{#1}{\lla} \ }}
+\newcommand{\qdeq}{\quad\deq\quad}
+\newcommand{\qapprox}{\quad\approx\quad}
+\newcommand{\qimplies}{\quad\implies\quad}
+\newcommand{\qsubset}{\quad\subset\quad}
+\newcommand{\qsubseteq}{\quad\subseteq\quad}
+\newcommand{\qin}{\quad\in\quad}
+\newcommand{\qsucc}{\quad\succ\quad}
+\newcommand{\qsucceq}{\quad\succeq\quad}
+
+
+%% Math Pre Functions
+\newcommand{\qforall}{\,\forall\,}
+\newcommand{\qexists}{\,\exists\,}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+
+\newcommand{\pr}[1]{{#1}^{\prime}}
+\newcommand{\trans}[1]{{#1}^{\text{T}}}
+
+
+%% Asymptotic notation
+\newcommand{\bigO}[1]{\cO \para{#1}}
+\newcommand{\softO}[1]{\widetilde{\cO}\para{#1}}
+\newcommand{\Om}[1]{\Omega\para{#1}}
+\newcommand{\softOm}[1]{\tilde\Omega\para{#1}}
+
+
+%% Miscellaneous
+\newcommand{\pipe}{\,\big|\,}
+\newcommand{\spipe}{\,|\,}
+\newcommand{\eps}{\epsilon}
+
+\newcommand{\nll}{\\ &\hspace{1.1cm}}
+
+\newenvironment{margin}[0]
+{
+	\begin{addmargin}{1.5em}
+	}{
+	\end{addmargin}
+}
+
+\newcommand{\id}{\;\text{d}}
+
+\newcommand{\sups}[1]{$^\mt{#1}$}
+\newcommand{\supst}[1]{$^\tiny{\mt{#1}}$}
+\newcommand{\subs}[1]{$_\mt{#1}$}
+\newcommand{\subst}[1]{$_\tiny{\mt{#1}}$}
+
+\newcommand{\tth}[0]{\supst{th}}
+
+\newcommand{\ie}{\et{i.e.}}
+
+\newcommand{\iid}{%
+	\mathrel{\overset{iid}{\scalebox{1.5}[1]{$\sim$}}}
+}
+
+\newcommand{\ND}[1]{\func{\cN}{#1}}
+
+\newcommand{\cd}{\cdot}
+
+\newcommand{\indep}{\perp \!\!\! \perp}
+\newcommand{\nindep}{\not\!\perp\!\!\!\perp}
+
+\newcommand{\mle}[1]{#1_{\text{MLE}}}
+\newcommand{\map}[1]{#1_{\text{MAP}}}
+
+\newcommand{\comment}[2][]{%
+    \ifstrequal{#1}{}{%
+        \todo[inline, backgroundcolor=blue!25!white]{#2}
+    }{%
+        \todo[author=#1, inline, backgroundcolor=blue!25!white]{#2}
+    }
+}
+\newcommand{\issue}[2][]{%
+    \ifstrequal{#1}{}{%
+        \todo[inline]{#2}
+    }{%
+        \todo[author=#1, inline]{#2}
+    }
+}
+
+%% Environments
+\floatstyle{plain}
+\newfloat{algofloat}{tbhp}
+
+\newcounter{algo}
+\newenvironment{algo}[2][0.8\textwidth]
+{%
+	\vspace{2mm}
+	\refstepcounter{algo}
+	\begin{algofloat}[htpb]
+		\begin{center}
+			\begin{minipage}{#1}
+				\begin{framed}
+					\begin{center}
+						\hypertarget{algo:\thealgo}{\bt{Algorithm \thealgo}: #2}
+						\vspace{1.5mm}
+						\noindent\textcolor{silver}{\hrule}
+					\end{center}
+					\br
+}{%
+				\end{framed}
+			\end{minipage}
+		\end{center}
+	\end{algofloat}
+	\vspace{2mm}
+}
+
+% Headings
+
+\newenvironment{heading}[3]
+{
+	\ifthenelse{\equal{#1}{False}}
+	{
+		\ifthenelse{\equal{#2}{}}
+		{
+			\section*{#3}
+		}{
+			\hypertarget{#2}{\section*{#3}}
+		}
+	}{}
+	\ifthenelse{\equal{#1}{True}}
+	{
+		\ifthenelse{\equal{#2}{}}{
+			\section{#3}
+		}{
+			\hypertarget{#2}{\section{#3}}
+		}
+	}{}
+}{}
+
+\newenvironment{subheading}[3]{
+	\ifthenelse{\equal{#1}{False}}{
+		\ifthenelse{\equal{#2}{}}{
+			\subsection*{#3}
+		}{
+			\hypertarget{#2}{\subsection*{#3}}
+		}
+	}{}
+	\ifthenelse{\equal{#1}{True}}{
+		\ifthenelse{\equal{#2}{}}{
+			\subsection{#3}
+		}{
+			\hypertarget{#2}{\subsection{#3}}
+		}
+	}{}
+	\begin{addmargin}{1.5em}
+	}{
+	\end{addmargin}
+}
+
+\newenvironment{subsubheading}[3]{
+	\ifthenelse{\equal{#1}{False}}{
+		\ifthenelse{\equal{#2}{}}{
+			\subsubsection*{#3}
+		}{
+			\hypertarget{#2}{\subsubsection*{#3}}
+		}
+	}{}
+	\ifthenelse{\equal{#1}{True}}{
+		\ifthenelse{\equal{#2}{}}{
+			\subsubsection{#3}
+		}{
+			\hypertarget{#2}{\subsubsection{#3}}
+		}
+	}{}	
+	\begin{addmargin}{1.5em}
+	}{
+	\end{addmargin}
+}
+
+\newcommand{\code}[2][]{%
+	\colorbox{anti-flashwhite}{%
+		\ifthenelse{\equal{#1}{}}{\parbox{0.7\textwidth}}{\parbox{#1}}
+		{%
+			%\br
+			\ct{#2}
+			\br
+		}
+	}
+}
+
+%\newcommand{\twocols}[4]{
+%	\begin{tabular}[h!]{@{}b{#2} L{#1}}
+%		\bt{\st{#3 } }	&	#4
+%	\end{tabular}
+%}
+
+% \newtheoremstyle{fatt}{\parskip}{}{}{}{\bfseries\sffamily}{}{.5em}{}
+\newtheoremstyle{fatt}{3pt}{3pt}{\itshape}{}{\bfseries}{.}{.5em}{} % chktex 6
+\theoremstyle{fatt}
+
+\newtheorem{thm}{Theorem}
+\newcounter{seriescode}
+\setcounter{seriescode}{1}
+
+% Theorem environments
+\theoremstyle{fatt}
+\let\theorem\relax
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+% \newtheorem{corollary}{Corollary}[theorem]
+% \newtheorem{claim}{Claim}[seriescode]
+% \newtheorem{property}{Property}[seriescode]
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem*{remark}{Remark}
+% \newtheorem*{note}{Note}
+\newtheorem{definition}{Definition}[seriescode]
+% \newtheorem{example}{Example}[seriescode]
+% \newtheorem{exercise}{Exercise}[seriescode]
+% \newtheorem{result}{Result}[definition]
+%
+% \newcommand{\hint}[1]{\begin{flushright} \et{Hint: #1} \end{flushright}}

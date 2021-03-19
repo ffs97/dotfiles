@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Uno Calculator
+Exec=/opt/yandex/browser-beta/yandex-browser-beta --profile-directory=Default --app-id=npcdokegicaaeaffbenccdonemplikmo
+Icon=/home/fat-fighter/.icons/calculator.svg
+Icon=calculator
+StartupWMClass=crx_npcdokegicaaeaffbenccdonemplikmo

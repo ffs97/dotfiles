@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=Skype
+Comment=Skype Internet Telephony
+Exec=/usr/bin/skypeforlinux %U
+Icon=/home/fat-fighter/.icons/skype.svg
+Terminal=false
+Type=Application
+StartupNotify=true
+StartupWMClass=Skype
+Encoding=UTF-8
+Categories=Network;Application;
+MimeType=x-scheme-handler/skype;
+X-KDE-Protocols=skype
+Actions=QuitSkype;
+
+[Desktop Action QuitSkype]
+Name=Quit Skype
+Exec=/usr/bin/skypeforlinux --shutdown
+OnlyShowIn=Unity;
+
