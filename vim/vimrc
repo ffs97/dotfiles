@@ -234,11 +234,11 @@ let g:deoplete#sources#dictionary#dictionaries = {
 \ }
 " }}}
 
-" Define keyword {{{
-if !exists("g:deoplete#keyword_patterns")
-    let g:deoplete#keyword_patterns = {}
-endif
-let g:deoplete#keyword_patterns["default"] = "\h\w*"
+" Define keyword {{{ --deprecated
+" if !exists("g:deoplete#keyword_patterns")
+"     let g:deoplete#keyword_patterns = {}
+" endif
+" let g:deoplete#keyword_patterns["default"] = "\h\w*"
 " }}}
 
 " Completion mappings {{{
@@ -268,10 +268,9 @@ inoremap <expr><bs> deoplete#smart_close_popup()."\<c-h>"
 " Define some options {{{
 let g:acp_enableAtStartup = 0
 let deoplete#enable_at_startup = 1
-let deoplete#enable_smart_case = 1
 let deoplete#sources#syntax#min_keyword_length = 3
-let deoplete#camel_case = v:true
-let deoplete#auto_complete_delay = 0
+" let deoplete#camel_case = v:true --deprecated
+" let deoplete#auto_complete_delay = 0 --deprecated
 let deoplete#smart_case = v:true
 let deoplete#min_pattern_length = 3
 " }}}
@@ -295,11 +294,6 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-" Note: Doesn't work
-" Enable omni completion with jedi {{{
-let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
-autocmd FileType python setlocal omnifunc=python3complete#Complete
-" }}}
 
 " --------------------------------------------------------------------------------------
 " Confuguring Autoformat

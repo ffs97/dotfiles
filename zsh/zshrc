@@ -156,10 +156,23 @@ bindkey "^[f" fzf-file-widget
 # Sourcing Miscellaneous Software
 
 # Conda
-. "/home/fat-fighter/software/conda/etc/profile.d/conda.sh"
-
-# Jump
-eval "$(jump shell)"
+# . "/home/fat-fighter/software/conda/etc/profile.d/conda.sh"  # commented out by conda initialize
 
 # Keychain
 # eval $(keychain --eval --quiet github)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/fat-fighter/software/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/fat-fighter/software/conda/etc/profile.d/conda.sh" ]; then
+        . "/home/fat-fighter/software/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/fat-fighter/software/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
