@@ -1,5 +1,6 @@
 install:
-	sudo pacman -S --noconfirm ranger
+	sudo pacman -S --noconfirm ranger python python-pip
+	pip install pillow
 
 config: rc.conf rifle.conf plugins/*
 	mkdir -p ~/.config/ranger

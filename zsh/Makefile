@@ -1,13 +1,12 @@
 install:
-	sudo pacman -S --noconfirm zsh wget exa
+	sudo pacman -S --noconfirm zsh wget exa fzf
 	rm -rf ~/.oh-my-zsh
 	wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-	sh install.sh
+	sh install.sh; rm install.sh
 	rm -rf ~/.zsh/zsh-autosuggestions
-	git clone git://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 	rm -rf ~/.zsh/zsh-syntax-highlighting
-	git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-	sudo usermod -s `which zsh` `whoami`
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
 config: zshrc bashrc themes/glass.zsh-theme
 	rm ~/.zshrc ~/.bashrc

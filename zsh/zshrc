@@ -36,6 +36,7 @@ setopt correct
 # Adding zsh plugins {{{
 plugins=(
     git
+    fzf
     python
     pip
     virtualenv
@@ -68,11 +69,9 @@ export ARCHFLAGS="-arch x86_64"
 # }}}
 
 # Sourcing zsh plugins {{{
-local fzf=".fzf.zsh"
 local autosuggestions=".zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 local syntaxhighlighting=".zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-[ -f $HOME/$fzf ] && source $HOME/$fzf
 [ -f $HOME/$autosuggestions ] && source $HOME/$autosuggestions
 [ -f $HOME/$syntaxhighlighting ] && source $HOME/$syntaxhighlighting
 
@@ -85,19 +84,16 @@ export FZF_COMPLETION_TRIGGER='?'
 
 # Pacman {{{
 function pg {
+    loc=$(pwd)
+    cd ~/downloads
     git clone https://aur.archlinux.org/$1.git
     cd $1
-    makepkg -Acs --noconfirm
-    if ls $1*.tar.xz 1> /dev/null 2>&1; then
-        sudo pacman -U --noconfirm $1*.tar.xz
-        cd ../
-    else
-        cd ../
-        echo "There was some error in downloading the package"
-    fi
+    makepkg -is
+    cd $loc
 }
 
 alias pi="sudo pacman -S --noconfirm"
+alias pf="sudo pacman -U --noconfirm"
 alias pu="sudo pacman -Syu --noconfirm"
 alias pd="sudo pacman -Rs --noconfirm"
 alias pc="sudo paccache -r"

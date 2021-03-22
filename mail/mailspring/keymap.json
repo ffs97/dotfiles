@@ -1,6 +1,0 @@
-{
-  "core:remove-from-view": "backspace",
-  "core:delete-item": "del",
-  "core:mark-as-unread": "u",
-  "composer:focus-to": "shift+mod+t"
-}

@@ -1,6 +1,10 @@
 install:
-	sudo pacman -S --noconfirm zsh vim python python-pip
+	sudo pacman -S --noconfirm zsh gvim python python-pip python-black npm
 	sudo pip install pynvim
+	git clone https://aur.archlinux.org/luacheck.git
+	cd luacheck; makepkg -is
+	rm -rf luacheck
+	sudo npm install -g lua-lmt
 
 config: vimrc shortcuts.vim lightline/* colors/* snippets/*
 	rm -rf ~/.vimrc
@@ -15,3 +19,4 @@ config: vimrc shortcuts.vim lightline/* colors/* snippets/*
 	ln shortcuts.vim ~/.vim/
 	ln -s snippets ~/.vim/
 	ln lightline/* ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/
+	ln -f ${HOME}/dotfiles/vim/luacheckrc ~/.luacheckrc

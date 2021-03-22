@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Presentation Viewer
+Exec=/opt/yandex/browser-beta/yandex-browser-beta --profile-directory=Default --app-id=eaijkahdncelnhgdbjplfihhggchafjo
+Icon=/home/fat-fighter/.icons/presentation.svg
+StartupWMClass=crx_eaijkahdncelnhgdbjplfihhggchafjo

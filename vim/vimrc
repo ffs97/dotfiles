@@ -21,7 +21,7 @@
 "   Configuration file for [g]vim
 "
 "   Dependencies:
-"       - vim +python (vim)
+"       - vim +python +clipboard (vim)
 "       - Vundle (vim)
 "       - black (python)
 "       - lua-fmt (lua)

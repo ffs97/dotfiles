@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dropbox
+GenericName=File Synchronizer
+Comment=Sync your files across computers and to the web
+Exec=dropbox start -i
+Icon=/home/fat-fighter/.icons/dropbox.svg
+Terminal=false
+StartupNotify=false
+Categories=Network;FileTransfer
