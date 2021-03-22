@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# requires oath-toolkit
+
+set -e
+set -o pipefail
+USERNAME="gurpreet.singh1"
+SERVER="phxgp1.nutanix.com"
+PASSWORD=$(secret-tool lookup vpn password)
+OTP_SEED=$(secret-tool lookup vpn 2fa)
+
+OTP=$(oathtool -s 30s --totp -b $OTP_SEED)
+for arg in "$PASSWORD" "3" "$OTP"; do
+    [[ -n "$arg" ]] && printf "%s\n" "$arg"
+done | sudo openconnect --protocol=gp --user $USERNAME --passwd-on-stdin $SERVER

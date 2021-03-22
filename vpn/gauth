@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+oathtool -s 30s --totp -b $(secret-tool lookup vpn 2fa)
