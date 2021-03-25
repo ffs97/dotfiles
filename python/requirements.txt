@@ -19,7 +19,7 @@ pynvim==0.4.1
 pyPEG2==2.15.2
 PyQt5==5.14.2
 PyQt5-sip==12.7.2
-PyYAML==5.3.1
+PyYAML==5.4
 qutebrowser==1.11.0
 regex==2020.4.4
 rpm==4.15.1
