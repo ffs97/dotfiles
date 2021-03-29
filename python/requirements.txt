@@ -13,7 +13,7 @@ pathspec==0.8.0
 pep517==0.8.2
 Pillow==7.1.2
 pycairo==1.19.1
-Pygments==2.6.1
+Pygments==2.7.4
 PyGObject==3.36.0
 pynvim==0.4.1
 pyPEG2==2.15.2
