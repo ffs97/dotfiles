@@ -4,5 +4,6 @@ install:
 config:
 	secret-tool store --label="Nutanix OKTA" vpn password
 	secret-tool store --label="Nutanix OKTA" vpn 2fa
-	sudo install ${HOME}/dotfiles/vpn/vpn-connect /usr/bin
-	sudo install ${HOME}/dotfiles/vpn/gauth /usr/bin
+	secret-tool store --label="Nutanix GitHub" 2fa secret
+	sudo ln -f ${HOME}/dotfiles/vpn/vpn-connect /usr/bin
+	sudo ln -f ${HOME}/dotfiles/vpn/gauth /usr/bin

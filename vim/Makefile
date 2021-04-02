@@ -15,8 +15,8 @@ config: vimrc shortcuts.vim lightline/* colors/* snippets/*
 	vim +PluginInstall +qall
 	mkdir -p ~/.vim/colors
 	for f in ./colors/*.vim; do rm -f $(basename $f | sed 's/^/\/home\/fat-fighter\/.vim\/colors\//'); done
-	ln ./colors/* ~/.vim/colors
-	ln shortcuts.vim ~/.vim/
-	ln -s snippets ~/.vim/
-	ln lightline/* ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/
+	ln -f ./colors/* ~/.vim/colors
+	ln -f shortcuts.vim ~/.vim/
+	ln -s -f snippets ~/.vim/
+	ln -f lightline/* ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/
 	ln -f ${HOME}/dotfiles/vim/luacheckrc ~/.luacheckrc

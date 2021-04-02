@@ -1,0 +1,190 @@
+{
+    "*": {
+        "env": "production",
+        "core": {
+            "themes": [
+                "ui-light"
+            ],
+            "disabledPackages": [
+                "message-view-on-github",
+                "personal-level-indicators",
+                "phishing-detection",
+                "nylas-private-salesforce",
+                "github-contact-card",
+                "keybase",
+                "composer-markdown",
+                "composer-scheduler",
+                "composer-mail-merge",
+                "send-and-archive",
+                "main-calendar"
+            ],
+            "workspace": {
+                "mode": "split",
+                "hiddenLocations": {},
+                "showUnreadForAllCategories": true,
+                "interfaceZoom": 0.95,
+                "menubarStyle": "autohide"
+            },
+            "keymapTemplate": "Gmail",
+            "tutorial": {
+                "seen": [
+                    "ThreadSearchBar",
+                    "ActivityListButton",
+                    "ModeToggle",
+                    "ToolbarSnooze",
+                    "LinkTrackingButton",
+                    "OpenTrackingButton",
+                    "SendLaterButton",
+                    "SendRemindersComposerButton"
+                ]
+            },
+            "sending": {
+                "undoSend": 5000
+            },
+            "composing": {
+                "spellcheckDefaultLanguage": "en-us"
+            },
+            "reading": {
+                "detailedNames": true,
+                "restrictMaxWidth": true
+            },
+            "theme": "less-is-more"
+        },
+        "identity": {
+            "id": "aba88ecf-5365-4a78-9a3e-aa5bc1f0d51c",
+            "firstName": "Gurpreet",
+            "lastName": "Singh",
+            "emailAddress": "g.singh6343@gmail.com",
+            "object": "identity",
+            "createdAt": "2021-03-18T04:31:33.000Z",
+            "stripePlan": "Basic",
+            "stripePlanEffective": "Basic",
+            "stripeCustomerId": "cus_J8UVuoBhrPgodd",
+            "stripePeriodEnd": "2021-04-18T04:31:32.000Z",
+            "featureUsage": {
+                "snooze": {
+                    "quota": 15,
+                    "period": "weekly",
+                    "usedInPeriod": 1,
+                    "featureLimitName": "basic-limit"
+                },
+                "send-later": {
+                    "quota": 5,
+                    "period": "weekly",
+                    "usedInPeriod": 0,
+                    "featureLimitName": "basic-limit"
+                },
+                "thread-sharing": {
+                    "quota": 3,
+                    "period": "weekly",
+                    "usedInPeriod": 0,
+                    "featureLimitName": "basic-limit"
+                },
+                "link-tracking": {
+                    "quota": 5,
+                    "period": "weekly",
+                    "usedInPeriod": 4,
+                    "featureLimitName": "basic-limit"
+                },
+                "open-tracking": {
+                    "quota": 5,
+                    "period": "weekly",
+                    "usedInPeriod": 4,
+                    "featureLimitName": "basic-limit"
+                },
+                "contact-profiles": {
+                    "quota": 3,
+                    "period": "weekly",
+                    "usedInPeriod": 3,
+                    "featureLimitName": "basic-limit"
+                },
+                "send-reminders": {
+                    "quota": 5,
+                    "period": "weekly",
+                    "usedInPeriod": 0,
+                    "featureLimitName": "basic-limit"
+                },
+                "translation": {
+                    "quota": 50,
+                    "period": "weekly",
+                    "usedInPeriod": 0,
+                    "featureLimitName": "basic-limit"
+                }
+            }
+        },
+        "accounts": [
+            {
+                "id": "ab840930",
+                "metadata": [],
+                "name": "Gurpreet Singh",
+                "provider": "gmail",
+                "emailAddress": "g.singh6343@gmail.com",
+                "settings": {
+                    "imap_allow_insecure_ssl": false,
+                    "imap_host": "imap.gmail.com",
+                    "imap_port": 993,
+                    "imap_security": "SSL / TLS",
+                    "imap_username": "g.singh6343@gmail.com",
+                    "refresh_client_id": "662287800555-0a5h4ii0e9hsbpq0mqtul7fja0jhf9uf.apps.googleusercontent.com",
+                    "smtp_allow_insecure_ssl": false,
+                    "smtp_host": "smtp.gmail.com",
+                    "smtp_port": 587,
+                    "smtp_security": "STARTTLS",
+                    "smtp_username": "g.singh6343@gmail.com"
+                },
+                "label": "g.singh6343@gmail.com",
+                "autoaddress": {
+                    "type": "bcc",
+                    "value": ""
+                },
+                "aliases": [],
+                "syncState": "ok",
+                "authedAt": 1616041910.635,
+                "color": "",
+                "__cls": "Account"
+            },
+            {
+                "id": "8a93b3d1",
+                "metadata": [],
+                "name": "Gurpreet Singh",
+                "provider": "gmail",
+                "emailAddress": "gs3056@columbia.edu",
+                "settings": {
+                    "imap_allow_insecure_ssl": false,
+                    "imap_host": "imap.gmail.com",
+                    "imap_port": 993,
+                    "imap_security": "SSL / TLS",
+                    "imap_username": "gs3056@columbia.edu",
+                    "refresh_client_id": "662287800555-0a5h4ii0e9hsbpq0mqtul7fja0jhf9uf.apps.googleusercontent.com",
+                    "smtp_allow_insecure_ssl": false,
+                    "smtp_host": "smtp.gmail.com",
+                    "smtp_port": 465,
+                    "smtp_security": "SSL / TLS",
+                    "smtp_username": "gs3056@columbia.edu"
+                },
+                "label": "gs3056@columbia.edu",
+                "autoaddress": {
+                    "type": "bcc",
+                    "value": ""
+                },
+                "aliases": [],
+                "syncState": "ok",
+                "authedAt": 1616044146.74,
+                "color": "",
+                "__cls": "Account"
+            }
+        ],
+        "accountsVersion": 4,
+        "mailspring": {
+            "disabledCalendars": []
+        },
+        "plugins": {
+            "link-tracking": {
+                "defaultOn": false
+            },
+            "open-tracking": {
+                "defaultOn": false
+            }
+        }
+    }
+}

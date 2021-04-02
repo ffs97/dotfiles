@@ -13,6 +13,8 @@ webcam:
 	
 meeting:
 	$(call install_git,skypeforlinux-stable-bin)
+	$(call install_git,zoom)
+	$(call install_git,slack-desktop)
 
 files:
 	sudo pacman -S --noconfirm nautilus
@@ -63,10 +65,10 @@ screen:
 	ln -f ${HOME}/dotfiles/apps/screen/screenrc ~/.screenrc
 
 visualizer:
-	git clone https://aur.archlinux.org/cava.git
-	cd cava; makepkg -is
-	rm -rf cava
-	ln -f ${HOME}/dotfiles/apps/cava/config ~/.config/cava/confign -f ${HOME}/dotfiles/apps/cava/config ~/.config/cava/config
+	git clone https://aur.archlinux.org/cava.git cava_
+	cd cava_; makepkg -is
+	rm -rf cava_
+	ln -f ${HOME}/dotfiles/apps/cava/config ~/.config/cava/config
 
 browser:
 	sudo pacman -S --noconfirm libmpeg2
