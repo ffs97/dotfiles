@@ -46,11 +46,21 @@ dropbox:
 keyring:
 	sudo pacman -S --noconfirm gnome-keyring libsecret seahorse
 
+wmctrl:
+	$(call install_aur,wmctrl)
+
 mail: keyring
-	git clone https://aur.archlinux.org/mailspring.git ms
-	cd ms; makepkg -is
-	rm -rf ms
-	ln -f ${HOME}/dotfiles/apps/mailspring/* ~/.config/Mailspring
+	$(call install_git,mailspring)
+	ln -f ${HOME}/dotfiles/apps/mail/mailspring/* ~/.config/Mailspring
+	# $(call install_git,ms-office-online)
+	# sudo ln -f ${HOME}/dotfiles/apps/mail/ms-office /usr/bin/ms-office
+	wget https://github.com/eNkru/freelook/releases/download/v1.0.1/electron-outlook-1.0.1-x86_64.AppImage
+	mkdir -p ~/software
+	mv electron-outlook-1.0.1-x86_64.AppImage ~/software/outlook.AppImage
+
+screen:
+	$(call install_aur,screen)
+	ln -f ${HOME}/dotfiles/apps/screen/screenrc ~/.screenrc
 
 visualizer:
 	git clone https://aur.archlinux.org/cava.git
@@ -69,6 +79,9 @@ music:
 	git clone https://aur.archlinux.org/youtube-music-bin.git yt
 	cd yt; makepkg -is
 	rm -rf yt
+
+qt:
+	$(call install_aur,qt5-tools qt5-base)
 
 all: webcam files monitor settings dropbox mail
 	ln -sf ${HOME}/dotfiles/apps/applications ~/.local/share/

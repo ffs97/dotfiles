@@ -1,3 +1,14 @@
 #!/usr/bin/sh
 
-oathtool -s 30s --totp -b $(secret-tool lookup vpn 2fa)
+type=$1
+if [ -z $type ]; then
+    type="okta"
+fi
+
+if [ $type = "okta" ]; then
+    secret=$(secret-tool lookup vpn 2fa)
+elif [ $type = "git" ]; then
+    secret=$(secret-tool lookup 2fa secret)
+fi
+
+oathtool -s 30s --totp -b $secret

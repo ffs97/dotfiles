@@ -2,7 +2,7 @@
 Name=Visual Studio Code
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/usr/bin/code-oss --no-sandbox --unity-launch %F
+Exec=/usr/bin/code
 Icon=/home/fat-fighter/.icons/vscode.svg
 Type=Application
 StartupNotify=false

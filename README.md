@@ -16,3 +16,4 @@
     - Fonts: nerd font for iosevka
 5. Add theme-config to dotfiles
 6. Add complete ./install option
+7. Add dependencies for awesomewm

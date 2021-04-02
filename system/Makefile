@@ -5,18 +5,18 @@ wifi:
 	sudo pacman -S --noconfirm wpa_supplicant connman dhcpcd
 	sudo systemctl enable connman
 
-bluetooth:
-	sudo pacman -S --noconfirm pulseaudio-bluetooth blueman libappindicator-gtk3
-	sudo systemctl start bluetooth
-
 sound:
-	sudo pacman -S --noconfirm pulseaudio python2 asoundconf playerctl
+	sudo pacman -S --noconfirm pipewire pipewire-pulse python2 asoundconf playerctl
 	rm -rf ~/.asoundrc
 	asoundconf set-default-card PCH
 	echo "defaults.ctl.card PCH" >> ~/.asoundrc
 	echo "defaults.pcm.card PCH" >> ~/.asoundrc
 	echo -e "blacklist snd_hda_intel\nblacklist snd_hda_codec_hdmi" | sudo tee -a /etc/modprobe.d/blacklist > /dev/null
 	install ~/.config/awesome/scripts/volume ~/.local/bin/
+
+bluetooth: sound
+	sudo pacman -S --noconfirm blueman libappindicator-gtk3
+	sudo systemctl start bluetooth
 
 screenshot:
 	sudo pacman -S --noconfirm scrot xclip xdotool
